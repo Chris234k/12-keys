@@ -1,233 +1,271 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.chris234k.keys12.Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TableRow
+    <androidx.constraintlayout.helper.widget.Flow
         android:id="@+id/one"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal">
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="key4,key,key2,key3,key8"
+        app:flow_horizontalStyle="packed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <com.chris234k.keys12.Key
-            android:id="@+id/key8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="DEL"
-            app:down="1"
-            app:special="true"
-            app:tap="delete" />
+    <com.chris234k.keys12.Key
+        android:id="@+id/key"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="\@-_/1"
+        app:down="1"
+        app:left="-"
+        app:right="/"
+        app:tap="\@"
+        app:up="_"
+        tools:layout_editor_absoluteX="88dp" />
 
-        <com.chris234k.keys12.Key
-            android:id="@+id/key"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="\@-_/1"
-            app:down="1"
-            app:left="-"
-            app:right="/"
-            app:tap="\@"
-            app:up="_" />
+    <com.chris234k.keys12.Key
+        android:id="@+id/key2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ABC2"
+        app:down="2"
+        app:left="b"
+        app:tap="a"
+        app:up="c"
+        tools:layout_editor_absoluteX="176dp" />
 
-        <com.chris234k.keys12.Key
-            android:id="@+id/key2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ABC2"
-            app:down="2"
-            app:left="b"
-            app:tap="a"
-            app:up="c" />
+    <com.chris234k.keys12.Key
+        android:id="@+id/key4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DEL"
+        app:down="1"
+        app:special="true"
+        app:tap="delete"
+        tools:layout_editor_absoluteX="352dp" />
 
-        <com.chris234k.keys12.Key
-            android:id="@+id/key3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="DEF3"
-            app:down="3"
-            app:left="e"
-            app:tap="d"
-            app:up="f" />
+    <com.chris234k.keys12.Key
+        android:id="@+id/key3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DEF3"
+        app:down="3"
+        app:left="e"
+        app:tap="d"
+        app:up="f"
+        tools:layout_editor_absoluteX="264dp" />
 
-        <com.chris234k.keys12.Key
-            android:id="@+id/key4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="DEL"
-            app:down="1"
-            app:special="true"
-            app:tap="delete" />
+    <com.chris234k.keys12.Key
+        android:id="@+id/key8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DEL"
+        app:down="1"
+        app:special="true"
+        app:tap="delete"
+        tools:layout_editor_absoluteX="74dp" />
 
-    </TableRow>
-
-    <TableRow
+    <androidx.constraintlayout.helper.widget.Flow
         android:id="@+id/two"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="key15,key5,key6,key7,key16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/one" />
 
-        <com.chris234k.keys12.Key
-            android:id="@+id/key15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="&lt;"
-            app:down="1"
-            app:special="true"
-            app:tap="cursor_left" />
+    <com.chris234k.keys12.Key
+        android:id="@+id/key15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="&lt;"
+        app:down="1"
+        app:special="true"
+        app:tap="cursor_left"
+        tools:layout_editor_absoluteX="235dp"
+        tools:layout_editor_absoluteY="207dp" />
 
-        <com.chris234k.keys12.Key
-            android:id="@+id/key5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="GHI4"
-            app:down="4"
-            app:left="h"
-            app:tap="g"
-            app:up="i" />
+    <com.chris234k.keys12.Key
+        android:id="@+id/key5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GHI4"
+        app:down="4"
+        app:left="h"
+        app:tap="g"
+        app:up="i"
+        tools:layout_editor_absoluteX="88dp"
+        tools:layout_editor_absoluteY="48dp" />
 
-        <com.chris234k.keys12.Key
-            android:id="@+id/key6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="JKL5"
-            app:down="5"
-            app:left="k"
-            app:tap="j"
-            app:up="l" />
+    <com.chris234k.keys12.Key
+        android:id="@+id/key6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="JKL5"
+        app:down="5"
+        app:left="k"
+        app:tap="j"
+        app:up="l"
+        tools:layout_editor_absoluteX="143dp"
+        tools:layout_editor_absoluteY="212dp" />
 
-        <com.chris234k.keys12.Key
-            android:id="@+id/key7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="MNO6"
-            app:down="6"
-            app:left="n"
-            app:tap="m"
-            app:up="o" />
+    <com.chris234k.keys12.Key
+        android:id="@+id/key7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MNO6"
+        app:down="6"
+        app:left="n"
+        app:tap="m"
+        app:up="o"
+        tools:layout_editor_absoluteX="264dp"
+        tools:layout_editor_absoluteY="48dp" />
 
-        <com.chris234k.keys12.Key
-            android:id="@+id/key16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="&gt;"
-            app:down="1"
-            app:special="true"
-            app:tap="cursor_right" />
+    <com.chris234k.keys12.Key
+        android:id="@+id/key16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="&gt;"
+        app:down="1"
+        app:special="true"
+        app:tap="cursor_right"
+        tools:layout_editor_absoluteX="352dp"
+        tools:layout_editor_absoluteY="48dp" />
 
-    </TableRow>
-
-    <TableRow
+    <androidx.constraintlayout.helper.widget.Flow
         android:id="@+id/three"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:constraint_referenced_ids="key18,key9,key10,key11,key17"
+        app:layout_constraintTop_toBottomOf="@+id/two"
+        tools:layout_editor_absoluteX="0dp" />
 
-        <com.chris234k.keys12.Key
-            android:id="@+id/key18"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="␣"
-            app:down="1"
-            app:special="true"
-            app:tap="space" />
+    <com.chris234k.keys12.Key
+        android:id="@+id/key18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="␣"
+        app:special="true"
+        app:tap="space"
+        tools:layout_editor_absoluteX="250dp"
+        tools:layout_editor_absoluteY="345dp" />
 
-        <com.chris234k.keys12.Key
-            android:id="@+id/key9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="PQRS7"
-            app:down="7"
-            app:left="q"
-            app:right="s"
-            app:tap="p"
-            app:up="r" />
+    <com.chris234k.keys12.Key
+        android:id="@+id/key9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PQRS7"
+        app:down="7"
+        app:left="q"
+        app:right="s"
+        app:tap="p"
+        app:up="r"
+        tools:layout_editor_absoluteY="345dp" />
 
-        <com.chris234k.keys12.Key
-            android:id="@+id/key10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TUV8"
-            app:down="8"
-            app:left="u"
-            app:tap="t"
-            app:up="v" />
+    <com.chris234k.keys12.Key
+        android:id="@+id/key10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TUV8"
+        app:down="8"
+        app:left="u"
+        app:tap="t"
+        app:up="v"
+        tools:layout_editor_absoluteX="15dp"
+        tools:layout_editor_absoluteY="345dp" />
 
-        <com.chris234k.keys12.Key
-            android:id="@+id/key11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="WXYZ9"
-            app:down="2"
-            app:left="x"
-            app:right="z"
-            app:tap="w"
-            app:up="y" />
+    <com.chris234k.keys12.Key
+        android:id="@+id/key11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WXYZ9"
+        app:down="9"
+        app:left="x"
+        app:right="z"
+        app:tap="w"
+        app:up="y"
+        tools:layout_editor_absoluteX="103dp"
+        tools:layout_editor_absoluteY="345dp" />
 
-        <com.chris234k.keys12.Key
-            android:id="@+id/key17"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="␣"
-            app:down="1"
-            app:special="true"
-            app:tap="space" />
-    </TableRow>
+    <com.chris234k.keys12.Key
+        android:id="@+id/key17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="␣"
+        app:special="true"
+        app:tap="space"
+        tools:layout_editor_absoluteX="191dp"
+        tools:layout_editor_absoluteY="345dp" />
 
-    <TableRow
+    <androidx.constraintlayout.helper.widget.Flow
         android:id="@+id/four"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="key20,key12,key13,key14,key19"
+        app:layout_constraintTop_toBottomOf="@+id/three"
+        tools:layout_editor_absoluteX="0dp" />
 
-        <com.chris234k.keys12.Key
-            android:id="@+id/key19"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="⏎"
-            app:down="1"
-            app:special="true"
-            app:tap="return" />
+    <com.chris234k.keys12.Key
+        android:id="@+id/key20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="⏎"
+        app:down="1"
+        app:special="true"
+        app:tap="return"
+        tools:layout_editor_absoluteX="352dp" />
 
-        <com.chris234k.keys12.Key
-            android:id="@+id/key12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="shift"
-            app:down="2"
-            app:tap="shift" />
+    <com.chris234k.keys12.Key
+        android:id="@+id/key12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="shift"
+        app:down="2"
+        app:tap="shift"
+        tools:layout_editor_absoluteX="277dp"
+        tools:layout_editor_absoluteY="151dp" />
 
-        <com.chris234k.keys12.Key
-            android:id="@+id/key13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="'&quot;:;"
-            app:down="2"
-            app:left='"'
-            app:right=";"
-            app:tap="'"
-            app:up=":" />
+    <com.chris234k.keys12.Key
+        android:id="@+id/key13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="'&quot;:;"
+        app:down="2"
+        app:left='"'
+        app:right=";"
+        app:tap="'"
+        app:up=":"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="148dp" />
 
-        <com.chris234k.keys12.Key
-            android:id="@+id/key14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=".,?!"
-            app:down="2"
-            app:left=","
-            app:right="!"
-            app:tap="."
-            app:up="\?" />
+    <com.chris234k.keys12.Key
+        android:id="@+id/key14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=".,?!"
+        app:down="2"
+        app:left=","
+        app:right="!"
+        app:tap="."
+        app:up="\?"
+        tools:layout_editor_absoluteX="264dp"
+        tools:layout_editor_absoluteY="96dp" />
 
-        <com.chris234k.keys12.Key
-            android:id="@+id/key20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="⏎"
-            app:down="1"
-            app:special="true"
-            app:tap="return" />
-
-    </TableRow>
+    <com.chris234k.keys12.Key
+        android:id="@+id/key19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="⏎"
+        app:down="1"
+        app:special="true"
+        app:tap="return"
+        tools:layout_editor_absoluteX="338dp"
+        tools:layout_editor_absoluteY="148dp" />
 
 </com.chris234k.keys12.Keyboard>
