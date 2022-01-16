@@ -15,26 +15,14 @@ import android.widget.FrameLayout;
 import android.widget.TableLayout;
 
 
-public class Keyboard extends FrameLayout implements View.OnClickListener {
+public class Keyboard extends FrameLayout {
 
-    private KeyListener listener;
+    public static KeyListener listener;
 
     public Keyboard(Context context) { super(context); }
     public Keyboard(Context context, AttributeSet attrs) {super(context, attrs);}
 
     public void SetListener(KeyListener l) {
         listener = l;
-    }
-
-    @Override
-    public void onClick(View v) {
-        Log.e("chris", "click");
-
-        Key key = (Key) v;
-
-        if(key != null) {
-            Log.e("chris", "key click!");
-            listener.onKey(25);
-        }
     }
 }

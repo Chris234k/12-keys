@@ -1,4 +1,9 @@
 <resources>
     <declare-styleable name="Key">
+        <attr name="tap" format="string" />
+        <attr name="up" format="string" />
+        <attr name="down" format="string" />
+        <attr name="left" format="string" />
+        <attr name="right" format="string" />
     </declare-styleable>
 </resources>

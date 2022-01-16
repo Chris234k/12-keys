@@ -3,7 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/layout/keyboard_layout.xml" value="0.23333333333333334" />
+        <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/layout/key_layout.xml" value="0.25625" />
+        <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/layout/keyboard_layout.xml" value="0.33" />
         <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/layout/keys_layout.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/layout/keys_view.xml" value="0.14270833333333333" />
         <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/layout/sample_key.xml" value="0.33559782608695654" />
