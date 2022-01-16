@@ -7,7 +7,8 @@
     <TableRow
         android:id="@+id/one"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal">
 
         <com.chris234k.keys12.Key
             android:id="@+id/key"
@@ -45,7 +46,8 @@
     <TableRow
         android:id="@+id/two"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal">
 
         <com.chris234k.keys12.Key
             android:id="@+id/key5"
@@ -82,7 +84,8 @@
     <TableRow
         android:id="@+id/three"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal">
 
         <com.chris234k.keys12.Key
             android:id="@+id/key9"
@@ -120,13 +123,14 @@
     <TableRow
         android:id="@+id/four"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal">
 
         <com.chris234k.keys12.Key
             android:id="@+id/key12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="a^"
+            android:text="shift"
             app:down="2"
             app:tap="case" />
 
