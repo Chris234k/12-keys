@@ -20,7 +20,7 @@
 
     <com.chris234k.keys12.Key
         android:id="@+id/key"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="\@-_/1"
         app:down="1"
@@ -32,7 +32,7 @@
 
     <com.chris234k.keys12.Key
         android:id="@+id/key2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="ABC2"
         app:down="2"
@@ -43,17 +43,16 @@
 
     <com.chris234k.keys12.Key
         android:id="@+id/key4"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="DEL"
-        app:down="1"
         app:special="true"
         app:tap="delete"
         tools:layout_editor_absoluteX="352dp" />
 
     <com.chris234k.keys12.Key
         android:id="@+id/key3"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="DEF3"
         app:down="3"
@@ -64,17 +63,16 @@
 
     <com.chris234k.keys12.Key
         android:id="@+id/key8"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="DEL"
-        app:down="1"
         app:special="true"
         app:tap="delete"
         tools:layout_editor_absoluteX="74dp" />
 
     <androidx.constraintlayout.helper.widget.Flow
         android:id="@+id/two"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:constraint_referenced_ids="key15,key5,key6,key7,key16"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,10 +82,9 @@
 
     <com.chris234k.keys12.Key
         android:id="@+id/key15"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="&lt;"
-        app:down="1"
         app:special="true"
         app:tap="cursor_left"
         tools:layout_editor_absoluteX="235dp"
@@ -95,7 +92,7 @@
 
     <com.chris234k.keys12.Key
         android:id="@+id/key5"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="GHI4"
         app:down="4"
@@ -107,7 +104,7 @@
 
     <com.chris234k.keys12.Key
         android:id="@+id/key6"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="JKL5"
         app:down="5"
@@ -119,7 +116,7 @@
 
     <com.chris234k.keys12.Key
         android:id="@+id/key7"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="MNO6"
         app:down="6"
@@ -131,10 +128,9 @@
 
     <com.chris234k.keys12.Key
         android:id="@+id/key16"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="&gt;"
-        app:down="1"
         app:special="true"
         app:tap="cursor_right"
         tools:layout_editor_absoluteX="352dp"
@@ -142,16 +138,16 @@
 
     <androidx.constraintlayout.helper.widget.Flow
         android:id="@+id/three"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         app:constraint_referenced_ids="key18,key9,key10,key11,key17"
-        app:layout_constraintTop_toBottomOf="@+id/two"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/two" />
 
     <com.chris234k.keys12.Key
         android:id="@+id/key18"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="␣"
         app:special="true"
@@ -161,7 +157,7 @@
 
     <com.chris234k.keys12.Key
         android:id="@+id/key9"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="PQRS7"
         app:down="7"
@@ -169,11 +165,12 @@
         app:right="s"
         app:tap="p"
         app:up="r"
+        tools:layout_editor_absoluteX="74dp"
         tools:layout_editor_absoluteY="345dp" />
 
     <com.chris234k.keys12.Key
         android:id="@+id/key10"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="TUV8"
         app:down="8"
@@ -185,7 +182,7 @@
 
     <com.chris234k.keys12.Key
         android:id="@+id/key11"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="WXYZ9"
         app:down="9"
@@ -198,7 +195,7 @@
 
     <com.chris234k.keys12.Key
         android:id="@+id/key17"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="␣"
         app:special="true"
@@ -208,38 +205,38 @@
 
     <androidx.constraintlayout.helper.widget.Flow
         android:id="@+id/four"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:constraint_referenced_ids="key20,key12,key13,key14,key19"
-        app:layout_constraintTop_toBottomOf="@+id/three"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/three" />
 
     <com.chris234k.keys12.Key
         android:id="@+id/key20"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="⏎"
-        app:down="1"
         app:special="true"
         app:tap="return"
-        tools:layout_editor_absoluteX="352dp" />
+        tools:layout_editor_absoluteX="352dp"
+        tools:layout_editor_absoluteY="144dp" />
 
     <com.chris234k.keys12.Key
         android:id="@+id/key12"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="shift"
-        app:down="2"
+        app:special="true"
         app:tap="shift"
         tools:layout_editor_absoluteX="277dp"
         tools:layout_editor_absoluteY="151dp" />
 
     <com.chris234k.keys12.Key
         android:id="@+id/key13"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="'&quot;:;"
-        app:down="2"
         app:left='"'
         app:right=";"
         app:tap="'"
@@ -249,10 +246,9 @@
 
     <com.chris234k.keys12.Key
         android:id="@+id/key14"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text=".,?!"
-        app:down="2"
         app:left=","
         app:right="!"
         app:tap="."
@@ -262,10 +258,9 @@
 
     <com.chris234k.keys12.Key
         android:id="@+id/key19"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="⏎"
-        app:down="1"
         app:special="true"
         app:tap="return"
         tools:layout_editor_absoluteX="338dp"
