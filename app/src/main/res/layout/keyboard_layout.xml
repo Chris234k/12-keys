@@ -45,77 +45,113 @@
     <TableRow
         android:id="@+id/two"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:translationY="50dp">
+        android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/button6"
+        <com.chris234k.keys12.Key
+            android:id="@+id/key5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="GHI" />
+            android:text="GHI4"
+            app:down="4"
+            app:left="h"
+            app:tap="g"
+            app:up="i" />
 
-        <Button
-            android:id="@+id/button7"
+        <com.chris234k.keys12.Key
+            android:id="@+id/key6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="JKL" />
+            android:text="JKL5"
+            app:down="5"
+            app:left="k"
+            app:tap="j"
+            app:up="l" />
 
-        <Button
-            android:id="@+id/button8"
+        <com.chris234k.keys12.Key
+            android:id="@+id/key7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="MNO" />
+            android:text="MNO6"
+            app:down="6"
+            app:left="n"
+            app:tap="m"
+            app:up="o" />
+
     </TableRow>
 
     <TableRow
         android:id="@+id/three"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:translationY="100dp">
+        android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/button9"
+        <com.chris234k.keys12.Key
+            android:id="@+id/key9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PQRS" />
+            android:text="PQRS7"
+            app:down="7"
+            app:left="q"
+            app:right="s"
+            app:tap="p"
+            app:up="r" />
 
-        <Button
-            android:id="@+id/button10"
+        <com.chris234k.keys12.Key
+            android:id="@+id/key10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TUV" />
+            android:text="TUV8"
+            app:down="8"
+            app:left="u"
+            app:tap="t"
+            app:up="v" />
 
-        <Button
-            android:id="@+id/button11"
+        <com.chris234k.keys12.Key
+            android:id="@+id/key11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="WXYZ" />
-
+            android:text="WXYZ9"
+            app:down="2"
+            app:left="x"
+            app:right="z"
+            app:tap="w"
+            app:up="y" />
     </TableRow>
 
     <TableRow
         android:id="@+id/four"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:translationY="150dp">
+        android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/button12"
+        <com.chris234k.keys12.Key
+            android:id="@+id/key12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="A^" />
+            android:text="a^"
+            app:down="2"
+            app:tap="case" />
 
-        <Button
-            android:id="@+id/button13"
+        <com.chris234k.keys12.Key
+            android:id="@+id/key13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="'&quot;:;" />
+            android:text="'&quot;:;"
+            app:down="2"
+            app:left='"'
+            app:right=";"
+            app:tap="'"
+            app:up=":" />
 
-        <Button
-            android:id="@+id/button14"
+        <com.chris234k.keys12.Key
+            android:id="@+id/key14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=".,?!" />
+            android:text=".,?!"
+            app:down="2"
+            app:left=","
+            app:right="!"
+            app:tap="."
+            app:up="\?" />
+
     </TableRow>
 
 </com.chris234k.keys12.Keyboard>

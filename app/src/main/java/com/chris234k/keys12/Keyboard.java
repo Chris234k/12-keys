@@ -15,7 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.TableLayout;
 
 
-public class Keyboard extends FrameLayout {
+public class Keyboard extends TableLayout {
 
     public static KeyListener listener;
 
