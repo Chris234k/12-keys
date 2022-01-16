@@ -6,13 +6,11 @@ import android.view.View;
 import android.view.inputmethod.InputConnection;
 
 public class KeysIME extends InputMethodService implements KeyListener {
-    public KeysIME() {
-        Log.e("chrissupersecret", "hello from ime");
-    }
+    public KeysIME() {}
 
     @Override
     public View onCreateInputView() {
-        KeysView inputView = (KeysView) getLayoutInflater().inflate(R.layout.keys_layout, null);
+        Keyboard inputView = (Keyboard) getLayoutInflater().inflate(R.layout.keyboard_layout, null);
         inputView.SetListener(this);
         return inputView;
     }
@@ -23,6 +21,8 @@ public class KeysIME extends InputMethodService implements KeyListener {
         if(ic == null) {
             return;
         }
+
+        Log.e("chris", "key input: " + key);
 
         char code = (char) key;
         ic.commitText(String.valueOf(code), 1);
