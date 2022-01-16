@@ -11,6 +11,15 @@
         android:gravity="center_horizontal">
 
         <com.chris234k.keys12.Key
+            android:id="@+id/key8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DEL"
+            app:down="1"
+            app:special="true"
+            app:tap="delete" />
+
+        <com.chris234k.keys12.Key
             android:id="@+id/key"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,6 +50,15 @@
             app:tap="d"
             app:up="f" />
 
+        <com.chris234k.keys12.Key
+            android:id="@+id/key4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DEL"
+            app:down="1"
+            app:special="true"
+            app:tap="delete" />
+
     </TableRow>
 
     <TableRow
@@ -48,6 +66,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal">
+
+        <com.chris234k.keys12.Key
+            android:id="@+id/key15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="&lt;"
+            app:down="1"
+            app:special="true"
+            app:tap="cursor_left" />
 
         <com.chris234k.keys12.Key
             android:id="@+id/key5"
@@ -79,6 +106,15 @@
             app:tap="m"
             app:up="o" />
 
+        <com.chris234k.keys12.Key
+            android:id="@+id/key16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="&gt;"
+            app:down="1"
+            app:special="true"
+            app:tap="cursor_right" />
+
     </TableRow>
 
     <TableRow
@@ -86,6 +122,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal">
+
+        <com.chris234k.keys12.Key
+            android:id="@+id/key18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="␣"
+            app:down="1"
+            app:special="true"
+            app:tap="space" />
 
         <com.chris234k.keys12.Key
             android:id="@+id/key9"
@@ -118,6 +163,15 @@
             app:right="z"
             app:tap="w"
             app:up="y" />
+
+        <com.chris234k.keys12.Key
+            android:id="@+id/key17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="␣"
+            app:down="1"
+            app:special="true"
+            app:tap="space" />
     </TableRow>
 
     <TableRow
@@ -127,12 +181,21 @@
         android:gravity="center_horizontal">
 
         <com.chris234k.keys12.Key
+            android:id="@+id/key19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⏎"
+            app:down="1"
+            app:special="true"
+            app:tap="return" />
+
+        <com.chris234k.keys12.Key
             android:id="@+id/key12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="shift"
             app:down="2"
-            app:tap="case" />
+            app:tap="shift" />
 
         <com.chris234k.keys12.Key
             android:id="@+id/key13"
@@ -155,6 +218,15 @@
             app:right="!"
             app:tap="."
             app:up="\?" />
+
+        <com.chris234k.keys12.Key
+            android:id="@+id/key20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⏎"
+            app:down="1"
+            app:special="true"
+            app:tap="return" />
 
     </TableRow>
 

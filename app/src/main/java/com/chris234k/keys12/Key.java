@@ -28,6 +28,8 @@ public class Key extends Button {
         down = a.getString(R.styleable.Key_down);
 
         inputs = new String[] {tap, left, up, right, down};
+
+        special = a.getBoolean(R.styleable.Key_special, false);
     }
 
     public Key(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -37,6 +39,7 @@ public class Key extends Button {
     private static final float MIN_DIST = 30f; // TODO TODO TODO: settings
 
     // input processing
+    public boolean special;
     private static final int TAP = 0, LEFT = 1, UP = 2, RIGHT = 3, DOWN = 4;
     public String tap, left, up, right, down;
     private String[] inputs;
@@ -62,12 +65,20 @@ public class Key extends Button {
                 if (isDown) {
                     isDown = false;
 
-                    processRelease(event.getX(), event.getY());
+                    if(special) {
+                        processSpecial();
+                    } else {
+                        processRelease(event.getX(), event.getY());
+                    }
                     return true;
                 }
         }
 
         return false;
+    }
+
+    private void processSpecial() {
+        Keyboard.listener.onSpecial(tap);
     }
 
     private void processRelease(float x, float y) {

@@ -1,5 +1,6 @@
 <resources>
     <declare-styleable name="Key">
+        <attr name="special" format="boolean"/>
         <attr name="tap" format="string" />
         <attr name="up" format="string" />
         <attr name="down" format="string" />
