@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 
 public class Key extends Button {
-
     public Key(Context context) {
         super(context);
     }
@@ -23,18 +22,28 @@ public class Key extends Button {
                 0, 0);
 
         tap = a.getString(R.styleable.Key_tap);
-        up = a.getString(R.styleable.Key_up);
-        down = a.getString(R.styleable.Key_down);
         left = a.getString(R.styleable.Key_left);
+        up = a.getString(R.styleable.Key_up);
         right = a.getString(R.styleable.Key_right);
+        down = a.getString(R.styleable.Key_down);
+
+        inputs = new String[] {tap, left, up, right, down};
     }
 
     public Key(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-    public boolean isDown;
-    public String tap, up, down, left, right;
+    private static final float MIN_DIST = 30f; // TODO TODO TODO: settings
+
+    // input processing
+    private static final int TAP = 0, LEFT = 1, UP = 2, RIGHT = 3, DOWN = 4;
+    public String tap, left, up, right, down;
+    private String[] inputs;
+
+    // key state
+    boolean isDown;
+    float startX, startY;
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -42,22 +51,65 @@ public class Key extends Button {
 
         switch(action) {
             case MotionEvent.ACTION_DOWN:
-                Log.d("chris", tap + " down");
                 isDown = true;
+
+                startX = event.getX();
+                startY = event.getY();
+
                 return true;
 
             case MotionEvent.ACTION_UP:
                 if (isDown) {
                     isDown = false;
 
-                    Log.d("chris", tap + " up");
-                    Keyboard.listener.onKey(tap.charAt(0));
-
-
+                    processRelease(event.getX(), event.getY());
                     return true;
                 }
         }
 
         return false;
+    }
+
+    private void processRelease(float x, float y) {
+        float dx = x - startX;
+        float dy = y - startY;
+
+        float sq_dist = Math.abs((x-startX) + (y-startY));
+
+        char c;
+
+        if(sq_dist > MIN_DIST) {
+            // find dir
+            if(Math.abs(dx) >= Math.abs(dy)) {
+                if(dx > 0) {
+                    c = getChar(RIGHT);
+                } else {
+                    c = getChar(LEFT);
+                }
+            } else {
+                if(dy > 0) { // (0,0) is top left
+                    c = getChar(DOWN);
+                } else {
+                    c = getChar(UP);
+                }
+            }
+        } else {
+            c = getChar(TAP);
+        }
+
+        if(c == Character.MIN_VALUE) {
+            return;
+        }
+
+        Keyboard.listener.onKey(c);
+    }
+
+    private char getChar(int index) {
+        String str = inputs[index];
+        if(str != null && str.length() > 0) {
+            return str.charAt(0);
+        }
+
+        return Character.MIN_VALUE;
     }
 }

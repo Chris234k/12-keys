@@ -13,22 +13,32 @@
             android:id="@+id/key"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="\@-_/"
-            app:tap="\@" />
+            android:text="\@-_/1"
+            app:down="1"
+            app:left="-"
+            app:right="/"
+            app:tap="\@"
+            app:up="_" />
 
         <com.chris234k.keys12.Key
             android:id="@+id/key2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ABC"
-            app:tap="a" />
+            android:text="ABC2"
+            app:down="2"
+            app:left="b"
+            app:tap="a"
+            app:up="c" />
 
         <com.chris234k.keys12.Key
             android:id="@+id/key3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="DEF"
-            app:tap="d" />
+            android:text="DEF3"
+            app:down="3"
+            app:left="e"
+            app:tap="d"
+            app:up="f" />
 
     </TableRow>
 
