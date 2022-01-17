@@ -45,6 +45,7 @@ public class Key extends Button {
     private String[] inputs;
 
     // key state
+    public int key_state = 0;
     boolean isDown;
     float startX, startY;
 
@@ -60,6 +61,39 @@ public class Key extends Button {
                 startX = event.getX();
                 startY = event.getY();
 
+                setBackgroundResource(R.drawable.key_pressed);
+
+                return true;
+
+            case MotionEvent.ACTION_MOVE:
+                if(isDown) {
+                    float x = event.getX();
+                    float y = event.getY();
+                    float sq_dist = Math.abs((x-startX) + (y-startY));
+
+                    float dx = x - startX;
+                    float dy = y - startY;
+
+                    if(sq_dist > MIN_DIST) { // TODO TODO TODO duplicate code of process inputs
+                        if(Math.abs(dx) >= Math.abs(dy)) {
+                            if(dx > 0) {
+                                setBackgroundResource(R.drawable.key_right);
+                            } else {
+                                setBackgroundResource(R.drawable.key_left);
+                            }
+                        } else {
+                            if(dy > 0) { // (0,0) is top left
+                                setBackgroundResource(R.drawable.key_down);
+                            } else {
+                                setBackgroundResource(R.drawable.key_up);
+                            }
+                        }
+                    } else {
+                        setBackgroundResource(R.drawable.key_pressed);
+                    }
+
+                    refreshDrawableState();
+                }
                 return true;
 
             case MotionEvent.ACTION_UP:
@@ -72,6 +106,8 @@ public class Key extends Button {
                     } else {
                         processRelease(event.getX(), event.getY());
                     }
+
+                    setBackgroundResource(R.drawable.key_default);
                     return true;
                 }
         }

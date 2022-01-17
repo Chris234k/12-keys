@@ -6,5 +6,11 @@
         <attr name="down" format="string" />
         <attr name="left" format="string" />
         <attr name="right" format="string" />
+
+        <attr name="key_state_tap" format="boolean"/>
+        <attr name="key_state_left" format="boolean"/>
+        <attr name="key_state_up" format="boolean"/>
+        <attr name="key_state_right" format="boolean"/>
+        <attr name="key_state_down" format="boolean"/>
     </declare-styleable>
 </resources>
