@@ -3,8 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/layout/key_layout.xml" value="0.25625" />
-        <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/layout/keyboard_layout.xml" value="0.5" />
+        <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/drawable-v24/key_default.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/drawable/ic_launcher_background.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/drawable/key.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/drawable/key_default.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/drawable/key_down.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/drawable/key_pressed.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/layout/key_layout.xml" value="2.0" />
+        <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/layout/keyboard_layout.xml" value="0.4730290456431535" />
         <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/layout/keys_layout.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/layout/keys_view.xml" value="0.14270833333333333" />
         <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/layout/sample_key.xml" value="0.33559782608695654" />

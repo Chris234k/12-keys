@@ -55,6 +55,7 @@ public class Key extends Button {
         switch(action) {
             case MotionEvent.ACTION_DOWN:
                 isDown = true;
+                setPressed(true);
 
                 startX = event.getX();
                 startY = event.getY();
@@ -64,6 +65,7 @@ public class Key extends Button {
             case MotionEvent.ACTION_UP:
                 if (isDown) {
                     isDown = false;
+                    setPressed(false);
 
                     if(special) {
                         processSpecial();
