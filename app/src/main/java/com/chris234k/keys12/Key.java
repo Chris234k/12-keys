@@ -36,7 +36,7 @@ public class Key extends Button {
         super(context, attrs, defStyleAttr);
     }
 
-    private static final float MIN_DIST = 30f; // TODO TODO TODO: settings
+    private static final float MIN_DIST = 30f; // TODO @settings
 
     // input processing
     public boolean special;

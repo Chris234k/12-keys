@@ -1,10 +1,16 @@
 package com.chris234k.keys12;
 
+import android.content.Context;
 import android.inputmethodservice.InputMethodService;
+import android.os.Build;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputConnection;
+
+import androidx.annotation.RequiresApi;
 
 public class KeysIME extends InputMethodService implements KeyListener {
     public KeysIME() {}
@@ -26,6 +32,8 @@ public class KeysIME extends InputMethodService implements KeyListener {
         Log.d("chris", "key input: " + c + " " + ((int) c));
 
         ic.commitText(String.valueOf(c), 1);
+
+        vibrate();
     }
 
     public void onSpecial(String special) {
@@ -63,6 +71,15 @@ public class KeysIME extends InputMethodService implements KeyListener {
                 ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DPAD_RIGHT));
                 ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DPAD_RIGHT));
             break;
+        }
+
+        vibrate();
+    }
+
+    private void vibrate() {
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) { // TODO support vibration on earlier versions of android?
+            v.vibrate(VibrationEffect.createPredefined(VibrationEffect.EFFECT_CLICK)); // TODO @settings
         }
     }
 }
