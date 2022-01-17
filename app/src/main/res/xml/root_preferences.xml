@@ -12,8 +12,6 @@
         <ListPreference
             app:key="reply"
             app:title="@string/reply_title"
-            app:entries="@array/reply_entries"
-            app:entryValues="@array/reply_values"
             app:defaultValue="reply"
             app:useSimpleSummaryProvider="true"/>
 

@@ -13,4 +13,8 @@
         <attr name="key_state_right" format="boolean"/>
         <attr name="key_state_down" format="boolean"/>
     </declare-styleable>
+
+    <dimen name="key_radius">0dp</dimen>
+    <dimen name="key_stroke_width">1dp</dimen>
+    <color name="key_stroke_color">@color/dark_1</color>
 </resources>

@@ -5,9 +5,9 @@
         android:color="@color/dark_2"/>
 
     <stroke
-        android:width="2dp"
-        android:color="@color/black"/>
+        android:width="@dimen/key_stroke_width"
+        android:color="@color/key_stroke_color"/>
 
     <corners
-        android:radius="5dp"/>
+        android:radius="@dimen/key_radius"/>
 </shape>
