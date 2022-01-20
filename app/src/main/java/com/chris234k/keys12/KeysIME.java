@@ -15,7 +15,9 @@ import androidx.annotation.RequiresApi;
 public class KeysIME extends InputMethodService implements KeyListener {
     public KeysIME() {}
 
-    private boolean isShift; // TODO this may want to live in Key class for UX reasons
+    boolean isShift, isCaps; // TODO this may want to live in Key class for UX reasons
+    final static long DOUBLE_TAP_THRESHOLD = 300; // in millis
+    long shiftTime = 0;
 
     @Override
     public View onCreateInputView() {
@@ -31,7 +33,7 @@ public class KeysIME extends InputMethodService implements KeyListener {
             return;
         }
 
-        if(isShift) {
+        if(isShift || isCaps) {
             isShift = false;
             c = Character.toUpperCase(c);
         }
@@ -52,7 +54,20 @@ public class KeysIME extends InputMethodService implements KeyListener {
         // TODO TODO TODO this feels like a hack?
         switch (special) {
             case "shift":
-                isShift = true;
+                if(isShift) { // double tap to enable caps lock
+                    long elapsed = System.currentTimeMillis() - shiftTime;
+
+                    if(elapsed < DOUBLE_TAP_THRESHOLD) {
+                        isCaps = true;
+                        isShift = false;
+                    }
+                } else if (isCaps) {
+                    isCaps = false;
+                } else {
+                    isShift = true;
+                    shiftTime = System.currentTimeMillis();
+                }
+
             break;
 
             case "delete":
