@@ -15,6 +15,8 @@ import androidx.annotation.RequiresApi;
 public class KeysIME extends InputMethodService implements KeyListener {
     public KeysIME() {}
 
+    private boolean isShift; // TODO this may want to live in Key class for UX reasons
+
     @Override
     public View onCreateInputView() {
         Keyboard inputView = (Keyboard) getLayoutInflater().inflate(R.layout.keyboard_layout, null);
@@ -27,6 +29,11 @@ public class KeysIME extends InputMethodService implements KeyListener {
         InputConnection ic = getCurrentInputConnection();
         if(ic == null) {
             return;
+        }
+
+        if(isShift) {
+            isShift = false;
+            c = Character.toUpperCase(c);
         }
 
         Log.d("chris", "key input: " + c + " " + ((int) c));
@@ -45,6 +52,7 @@ public class KeysIME extends InputMethodService implements KeyListener {
         // TODO TODO TODO this feels like a hack?
         switch (special) {
             case "shift":
+                isShift = true;
             break;
 
             case "delete":
