@@ -17,4 +17,6 @@
     <dimen name="key_radius">0dp</dimen>
     <dimen name="key_stroke_width">1dp</dimen>
     <color name="key_stroke_color">@color/dark_1</color>
+
+    <dimen name="key_height">60dp</dimen>
 </resources>

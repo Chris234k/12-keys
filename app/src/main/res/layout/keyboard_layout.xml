@@ -8,11 +8,12 @@
     android:visibility="visible">
 
     <androidx.constraintlayout.helper.widget.Flow
-        android:id="@+id/one"
+        android:id="@+id/row_one"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/key_height"
         app:constraint_referenced_ids="key4,key,key2,key3,key8"
         app:flow_horizontalStyle="packed"
+        app:flow_verticalStyle="spread_inside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,7 +21,7 @@
     <com.chris234k.keys12.Key
         android:id="@+id/key"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/key_default"
         android:text="\@-_/1"
         android:textColor="@color/light_font"
@@ -29,12 +30,13 @@
         app:right="/"
         app:tap="\@"
         app:up="_"
-        tools:layout_editor_absoluteX="88dp" />
+        tools:layout_editor_absoluteX="88dp"
+        tools:layout_editor_absoluteY="26dp" />
 
     <com.chris234k.keys12.Key
         android:id="@+id/key2"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/key_default"
         android:text="ABC2"
         android:textColor="@color/light_font"
@@ -42,23 +44,25 @@
         app:left="b"
         app:tap="a"
         app:up="c"
-        tools:layout_editor_absoluteX="176dp" />
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="26dp" />
 
     <com.chris234k.keys12.Key
         android:id="@+id/key4"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/key_default"
         android:text="DEL"
         android:textColor="@color/light_font"
         app:special="true"
         app:tap="delete"
-        tools:layout_editor_absoluteX="352dp" />
+        tools:layout_editor_absoluteX="352dp"
+        tools:layout_editor_absoluteY="26dp" />
 
     <com.chris234k.keys12.Key
         android:id="@+id/key3"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/key_default"
         android:text="DEF3"
         android:textColor="@color/light_font"
@@ -66,33 +70,36 @@
         app:left="e"
         app:tap="d"
         app:up="f"
-        tools:layout_editor_absoluteX="264dp" />
+        tools:layout_editor_absoluteX="264dp"
+        tools:layout_editor_absoluteY="26dp" />
 
     <com.chris234k.keys12.Key
         android:id="@+id/key8"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/key_default"
         android:text="DEL"
         android:textColor="@color/light_font"
         app:special="true"
         app:tap="delete"
-        tools:layout_editor_absoluteX="74dp" />
+        tools:layout_editor_absoluteX="74dp"
+        tools:layout_editor_absoluteY="26dp" />
 
     <androidx.constraintlayout.helper.widget.Flow
-        android:id="@+id/two"
+        android:id="@+id/row_two"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/key_height"
         app:constraint_referenced_ids="key15,key5,key6,key7,key16"
+        app:flow_verticalStyle="spread_inside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/one" />
+        app:layout_constraintTop_toBottomOf="@+id/row_one" />
 
     <com.chris234k.keys12.Key
         android:id="@+id/key15"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/key_default"
         android:text="&lt;"
         android:textColor="@color/light_font"
@@ -104,7 +111,7 @@
     <com.chris234k.keys12.Key
         android:id="@+id/key5"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/key_default"
         android:text="GHI4"
         android:textColor="@color/light_font"
@@ -118,7 +125,7 @@
     <com.chris234k.keys12.Key
         android:id="@+id/key6"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/key_default"
         android:text="JKL5"
         android:textColor="@color/light_font"
@@ -132,7 +139,7 @@
     <com.chris234k.keys12.Key
         android:id="@+id/key7"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/key_default"
         android:text="MNO6"
         android:textColor="@color/light_font"
@@ -146,7 +153,7 @@
     <com.chris234k.keys12.Key
         android:id="@+id/key16"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/key_default"
         android:text="&gt;"
         android:textColor="@color/light_font"
@@ -156,18 +163,19 @@
         tools:layout_editor_absoluteY="48dp" />
 
     <androidx.constraintlayout.helper.widget.Flow
-        android:id="@+id/three"
+        android:id="@+id/row_three"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/key_height"
         app:constraint_referenced_ids="key18,key9,key10,key11,key17"
+        app:flow_verticalStyle="spread_inside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/two" />
+        app:layout_constraintTop_toBottomOf="@+id/row_two" />
 
     <com.chris234k.keys12.Key
         android:id="@+id/key18"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/key_default"
         android:text="␣"
         android:textColor="@color/light_font"
@@ -179,7 +187,6 @@
     <com.chris234k.keys12.Key
         android:id="@+id/key9"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
         android:background="@drawable/key_default"
         android:text="PQRS7"
         android:textColor="@color/light_font"
@@ -189,12 +196,13 @@
         app:tap="p"
         app:up="r"
         tools:layout_editor_absoluteX="74dp"
-        tools:layout_editor_absoluteY="345dp" />
+        tools:layout_editor_absoluteY="345dp"
+        android:layout_height="0dp" />
 
     <com.chris234k.keys12.Key
         android:id="@+id/key10"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/key_default"
         android:text="TUV8"
         android:textColor="@color/light_font"
@@ -208,7 +216,7 @@
     <com.chris234k.keys12.Key
         android:id="@+id/key11"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/key_default"
         android:text="WXYZ9"
         android:textColor="@color/light_font"
@@ -223,7 +231,7 @@
     <com.chris234k.keys12.Key
         android:id="@+id/key17"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/key_default"
         android:text="␣"
         android:textColor="@color/light_font"
@@ -233,18 +241,19 @@
         tools:layout_editor_absoluteY="345dp" />
 
     <androidx.constraintlayout.helper.widget.Flow
-        android:id="@+id/four"
+        android:id="@+id/row_four"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/key_height"
         app:constraint_referenced_ids="key20,key12,key13,key14,key19"
+        app:flow_verticalStyle="spread_inside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/three" />
+        app:layout_constraintTop_toBottomOf="@+id/row_three" />
 
     <com.chris234k.keys12.Key
         android:id="@+id/key20"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/key_default"
         android:text="⏎"
         android:textColor="@color/light_font"
@@ -256,7 +265,7 @@
     <com.chris234k.keys12.Key
         android:id="@+id/key12"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/key_default"
         android:text="shift"
         android:textColor="@color/light_font"
@@ -268,7 +277,7 @@
     <com.chris234k.keys12.Key
         android:id="@+id/key13"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/key_default"
         android:text="'&quot;:;"
         android:textColor="@color/light_font"
@@ -282,7 +291,7 @@
     <com.chris234k.keys12.Key
         android:id="@+id/key14"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/key_default"
         android:text=".,?!"
         android:textColor="@color/light_font"
@@ -296,7 +305,7 @@
     <com.chris234k.keys12.Key
         android:id="@+id/key19"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/key_default"
         android:text="⏎"
         android:textColor="@color/light_font"
