@@ -279,8 +279,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/key_default"
-        android:text="'&quot;:;"
+        android:text="'&quot;:;0"
         android:textColor="@color/light_font"
+        app:down="0"
         app:left='"'
         app:right=";"
         app:tap="'"
