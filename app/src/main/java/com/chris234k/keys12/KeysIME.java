@@ -5,13 +5,9 @@ import android.inputmethodservice.InputMethodService;
 import android.os.Build;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputConnection;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 
 public class KeysIME extends InputMethodService implements KeyListener {
     public KeysIME() {}
@@ -19,7 +15,7 @@ public class KeysIME extends InputMethodService implements KeyListener {
     @Override
     public View onCreateInputView() {
         LayoutInflater inflater = getLayoutInflater();
-        Keyboard keyboard = (Keyboard) getLayoutInflater().inflate(R.layout.keyboard_layout, null);
+        Keyboard keyboard = (Keyboard) getLayoutInflater().inflate(R.layout.keyboard_usage_frequency_layout, null);
         keyboard.Init(this, inflater);
 
         return keyboard;

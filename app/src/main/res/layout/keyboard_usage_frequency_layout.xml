@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.chris234k.keys12.Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_1"
+    android:translationZ="-10dp"
+    android:visibility="visible">
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/row_one"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/key_height"
+        app:constraint_referenced_ids="key4,key,key2,key3,key8"
+        app:flow_horizontalStyle="packed"
+        app:flow_verticalStyle="spread_inside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.chris234k.keys12.Key
+        android:id="@+id/key"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/key_default"
+        android:text="abc1"
+        android:textColor="@color/light_font"
+        app:down="1"
+        app:left="b"
+        app:right="c"
+        app:tap="a"
+        tools:layout_editor_absoluteX="88dp"
+        tools:layout_editor_absoluteY="26dp" />
+
+    <com.chris234k.keys12.Key
+        android:id="@+id/key2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/key_default"
+        android:text="edf2"
+        android:textColor="@color/light_font"
+        app:down="2"
+        app:left="d"
+        app:tap="e"
+        app:up="f"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="26dp" />
+
+    <com.chris234k.keys12.Key
+        android:id="@+id/key4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/key_default"
+        android:text="DEL"
+        android:textColor="@color/light_font"
+        app:special="true"
+        app:tap="delete"
+        tools:layout_editor_absoluteX="352dp"
+        tools:layout_editor_absoluteY="26dp" />
+
+    <com.chris234k.keys12.Key
+        android:id="@+id/key3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/key_default"
+        android:text="hg3"
+        android:textColor="@color/light_font"
+        app:down="3"
+        app:left="g"
+        app:tap="h"
+        tools:layout_editor_absoluteX="264dp"
+        tools:layout_editor_absoluteY="26dp" />
+
+    <com.chris234k.keys12.Key
+        android:id="@+id/key8"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/key_default"
+        android:text="DEL"
+        android:textColor="@color/light_font"
+        app:special="true"
+        app:tap="delete"
+        tools:layout_editor_absoluteX="74dp"
+        tools:layout_editor_absoluteY="26dp" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/row_two"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/key_height"
+        app:constraint_referenced_ids="key15,key5,key6,key7,key16"
+        app:flow_verticalStyle="spread_inside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/row_one">
+
+    </androidx.constraintlayout.helper.widget.Flow>
+
+    <com.chris234k.keys12.Key
+        android:id="@+id/key15"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/key_default"
+        android:text="&lt;"
+        android:textColor="@color/light_font"
+        app:special="true"
+        app:tap="cursor_left"
+        tools:layout_editor_absoluteX="235dp"
+        tools:layout_editor_absoluteY="207dp" />
+
+    <com.chris234k.keys12.Key
+        android:id="@+id/key5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/key_default"
+        android:text="ijkl4"
+        android:textColor="@color/light_font"
+        app:down="4"
+        app:left="j"
+        app:right="l"
+        app:tap="i"
+        app:up="k"
+        tools:layout_editor_absoluteX="88dp"
+        tools:layout_editor_absoluteY="48dp" />
+
+    <com.chris234k.keys12.Key
+        android:id="@+id/key6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/key_default"
+        android:text="nm5"
+        android:textColor="@color/light_font"
+        app:down="5"
+        app:left="m"
+        app:tap="n"
+        tools:layout_editor_absoluteX="143dp"
+        tools:layout_editor_absoluteY="212dp" />
+
+    <com.chris234k.keys12.Key
+        android:id="@+id/key7"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/key_default"
+        android:text="opq6"
+        android:textColor="@color/light_font"
+        app:down="6"
+        app:left="p"
+        app:tap="o"
+        app:up="q"
+        tools:layout_editor_absoluteX="264dp"
+        tools:layout_editor_absoluteY="48dp" />
+
+    <com.chris234k.keys12.Key
+        android:id="@+id/key16"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/key_default"
+        android:text="&gt;"
+        android:textColor="@color/light_font"
+        app:special="true"
+        app:tap="cursor_right"
+        tools:layout_editor_absoluteX="352dp"
+        tools:layout_editor_absoluteY="48dp" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/row_three"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/key_height"
+        app:constraint_referenced_ids="key18,key9,key10,key11,key17"
+        app:flow_verticalStyle="spread_inside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/row_two"></androidx.constraintlayout.helper.widget.Flow>
+
+    <com.chris234k.keys12.Key
+        android:id="@+id/key18"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/key_default"
+        android:text="␣"
+        android:textColor="@color/light_font"
+        app:special="true"
+        app:tap="space"
+        tools:layout_editor_absoluteX="250dp"
+        tools:layout_editor_absoluteY="345dp" />
+
+    <com.chris234k.keys12.Key
+        android:id="@+id/key9"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/key_default"
+        android:text="swy7"
+        android:textColor="@color/light_font"
+        app:down="7"
+        app:left="w"
+        app:tap="s"
+        app:up="y"
+        tools:layout_editor_absoluteX="74dp"
+        tools:layout_editor_absoluteY="345dp" />
+
+    <com.chris234k.keys12.Key
+        android:id="@+id/key10"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/key_default"
+        android:text="rxz8"
+        android:textColor="@color/light_font"
+        app:down="8"
+        app:left="x"
+        app:tap="r"
+        app:up="z"
+        tools:layout_editor_absoluteX="15dp"
+        tools:layout_editor_absoluteY="345dp" />
+
+    <com.chris234k.keys12.Key
+        android:id="@+id/key11"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/key_default"
+        android:text="tuv9"
+        android:textColor="@color/light_font"
+        app:down="9"
+        app:left="u"
+        app:tap="t"
+        app:up="v"
+        tools:layout_editor_absoluteX="103dp"
+        tools:layout_editor_absoluteY="345dp" />
+
+    <com.chris234k.keys12.Key
+        android:id="@+id/key17"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/key_default"
+        android:text="␣"
+        android:textColor="@color/light_font"
+        app:special="true"
+        app:tap="space"
+        tools:layout_editor_absoluteX="191dp"
+        tools:layout_editor_absoluteY="345dp" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/row_four"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/key_height"
+        app:constraint_referenced_ids="key20,key12,key13,key14,key19"
+        app:flow_verticalStyle="spread_inside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/row_three" />
+
+    <com.chris234k.keys12.Key
+        android:id="@+id/key20"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/key_default"
+        android:text="⏎"
+        android:textColor="@color/light_font"
+        app:special="true"
+        app:tap="return"
+        tools:layout_editor_absoluteX="352dp"
+        tools:layout_editor_absoluteY="144dp" />
+
+    <com.chris234k.keys12.Key
+        android:id="@+id/key12"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/key_default"
+        android:text="shift"
+        android:textColor="@color/light_font"
+        app:special="true"
+        app:tap="shift"
+        tools:layout_editor_absoluteX="277dp"
+        tools:layout_editor_absoluteY="151dp" />
+
+    <com.chris234k.keys12.Key
+        android:id="@+id/key13"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/key_default"
+        android:text="'&quot;:;0"
+        android:textColor="@color/light_font"
+        app:down="0"
+        app:left='"'
+        app:right=";"
+        app:tap="'"
+        app:up=":"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="148dp" />
+
+    <com.chris234k.keys12.Key
+        android:id="@+id/key14"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/key_default"
+        android:text=".,?!"
+        android:textColor="@color/light_font"
+        app:left=","
+        app:right="!"
+        app:tap="."
+        app:up="\?"
+        tools:layout_editor_absoluteX="264dp"
+        tools:layout_editor_absoluteY="96dp" />
+
+    <com.chris234k.keys12.Key
+        android:id="@+id/key19"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/key_default"
+        android:text="⏎"
+        android:textColor="@color/light_font"
+        app:special="true"
+        app:tap="return"
+        tools:layout_editor_absoluteX="338dp"
+        tools:layout_editor_absoluteY="148dp" />
+
+</com.chris234k.keys12.Keyboard>
