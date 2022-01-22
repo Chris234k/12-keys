@@ -8,6 +8,8 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class Key extends Button {
     public Key(Context context) {
@@ -28,6 +30,7 @@ public class Key extends Button {
         down = a.getString(R.styleable.Key_down);
 
         inputs = new String[] {tap, left, up, right, down};
+        drawables = new int[] {R.drawable.key_pressed, R.drawable.key_left, R.drawable.key_up, R.drawable.key_right, R.drawable.key_down};
 
         special = a.getBoolean(R.styleable.Key_special, false);
     }
@@ -43,9 +46,9 @@ public class Key extends Button {
     private static final int TAP = 0, LEFT = 1, UP = 2, RIGHT = 3, DOWN = 4;
     public String tap, left, up, right, down;
     private String[] inputs;
+    private int[] drawables;
 
     // key state
-    public int key_state = 0;
     boolean isDown;
     float startX, startY;
 
@@ -57,6 +60,7 @@ public class Key extends Button {
             case MotionEvent.ACTION_DOWN:
                 isDown = true;
                 setPressed(true);
+                Keyboard.SetPopup(this, inputs[TAP]);
 
                 startX = event.getX();
                 startY = event.getY();
@@ -74,23 +78,27 @@ public class Key extends Button {
                     float dx = x - startX;
                     float dy = y - startY;
 
+                    int key_state = 0;
+
                     if(sq_dist > MIN_DIST) { // TODO TODO TODO duplicate code of process inputs
                         if(Math.abs(dx) >= Math.abs(dy)) {
                             if(dx > 0) {
-                                setBackgroundResource(R.drawable.key_right);
+                                key_state = RIGHT;
                             } else {
-                                setBackgroundResource(R.drawable.key_left);
+                                key_state = LEFT;
                             }
                         } else {
                             if(dy > 0) { // (0,0) is top left
-                                setBackgroundResource(R.drawable.key_down);
+                                key_state = DOWN;
+
                             } else {
-                                setBackgroundResource(R.drawable.key_up);
+                                key_state = UP;
                             }
                         }
-                    } else {
-                        setBackgroundResource(R.drawable.key_pressed);
                     }
+
+                    setBackgroundResource(drawables[key_state]);
+                    Keyboard.SetPopup(this, inputs[key_state]);
 
                     refreshDrawableState();
                 }
@@ -100,6 +108,7 @@ public class Key extends Button {
                 if (isDown) {
                     isDown = false;
                     setPressed(false);
+                    Keyboard.SetPopup(this, null);
 
                     if(special) {
                         processSpecial();

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_1"
+    android:translationZ="-10dp"
     android:visibility="visible">
 
     <androidx.constraintlayout.helper.widget.Flow
@@ -94,7 +95,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/row_one" />
+        app:layout_constraintTop_toBottomOf="@+id/row_one">
+
+    </androidx.constraintlayout.helper.widget.Flow>
 
     <com.chris234k.keys12.Key
         android:id="@+id/key15"
@@ -170,7 +173,7 @@
         app:flow_verticalStyle="spread_inside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/row_two" />
+        app:layout_constraintTop_toBottomOf="@+id/row_two"></androidx.constraintlayout.helper.widget.Flow>
 
     <com.chris234k.keys12.Key
         android:id="@+id/key18"
@@ -187,6 +190,7 @@
     <com.chris234k.keys12.Key
         android:id="@+id/key9"
         android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/key_default"
         android:text="PQRS7"
         android:textColor="@color/light_font"
@@ -196,8 +200,7 @@
         app:tap="p"
         app:up="r"
         tools:layout_editor_absoluteX="74dp"
-        tools:layout_editor_absoluteY="345dp"
-        android:layout_height="0dp" />
+        tools:layout_editor_absoluteY="345dp" />
 
     <com.chris234k.keys12.Key
         android:id="@+id/key10"

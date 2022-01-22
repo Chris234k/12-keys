@@ -6,9 +6,12 @@ import android.os.Build;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputConnection;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 
 import androidx.annotation.RequiresApi;
 
@@ -23,6 +26,14 @@ public class KeysIME extends InputMethodService implements KeyListener {
     public View onCreateInputView() {
         Keyboard inputView = (Keyboard) getLayoutInflater().inflate(R.layout.keyboard_layout, null);
         inputView.SetListener(this);
+
+        LinearLayout key_popup = (LinearLayout) getLayoutInflater().inflate(R.layout.key_popup_layout, null);
+        Keyboard.key_popup = key_popup;
+
+        PopupWindow popup_window = new PopupWindow(key_popup, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        popup_window.setTouchable(false);
+        Keyboard.popup_window = popup_window;
+
         return inputView;
     }
 
