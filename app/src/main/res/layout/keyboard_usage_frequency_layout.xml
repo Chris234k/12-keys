@@ -28,8 +28,8 @@
         android:textColor="@color/light_font"
         app:down="1"
         app:left="b"
-        app:right="c"
         app:tap="a"
+        app:up="c"
         tools:layout_editor_absoluteX="88dp"
         tools:layout_editor_absoluteY="26dp" />
 
