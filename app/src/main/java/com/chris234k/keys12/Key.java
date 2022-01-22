@@ -39,6 +39,8 @@ public class Key extends Button {
         super(context, attrs, defStyleAttr);
     }
 
+    public Keyboard keyboard;
+
     private static final float MIN_DIST = 30f; // TODO @settings
 
     // input processing
@@ -60,7 +62,7 @@ public class Key extends Button {
             case MotionEvent.ACTION_DOWN:
                 isDown = true;
                 setPressed(true);
-                Keyboard.SetPopup(this, inputs[TAP]);
+                keyboard.SetPopup(this, inputs[TAP]);
 
                 startX = event.getX();
                 startY = event.getY();
@@ -98,7 +100,7 @@ public class Key extends Button {
                     }
 
                     setBackgroundResource(drawables[key_state]);
-                    Keyboard.SetPopup(this, inputs[key_state]);
+                    keyboard.SetPopup(this, inputs[key_state]);
 
                     refreshDrawableState();
                 }
@@ -108,7 +110,7 @@ public class Key extends Button {
                 if (isDown) {
                     isDown = false;
                     setPressed(false);
-                    Keyboard.SetPopup(this, null);
+                    keyboard.SetPopup(this, null);
 
                     if(special) {
                         processSpecial();
@@ -125,7 +127,7 @@ public class Key extends Button {
     }
 
     private void processSpecial() {
-        Keyboard.listener.onSpecial(tap);
+        keyboard.onSpecial(tap);
     }
 
     private void processRelease(float x, float y) {
@@ -159,7 +161,7 @@ public class Key extends Button {
             return;
         }
 
-        Keyboard.listener.onKey(c);
+        keyboard.onKey(c);
     }
 
     private char getChar(int index) {
