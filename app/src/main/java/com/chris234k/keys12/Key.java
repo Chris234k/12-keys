@@ -3,6 +3,7 @@ package com.chris234k.keys12;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.Button;
 
@@ -121,8 +122,18 @@ public class Key extends Button {
         return false;
     }
 
+    public void onShift(boolean upper) {
+        String text = (String)getText();
+        if(upper) {
+            setText(text.toUpperCase());
+        } else {
+            Log.d("chris", "lower: " + text.toLowerCase());
+            setText(text.toLowerCase());
+        }
+    }
+
     private void processSpecial() {
-        keyboard.onSpecial(tap);
+        keyboard.onSpecial(this);
     }
 
     private void processRelease(float x, float y) {

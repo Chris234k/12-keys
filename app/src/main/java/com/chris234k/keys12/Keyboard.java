@@ -57,6 +57,8 @@ public class Keyboard extends ConstraintLayout {
                 key.keyboard = this;
             }
         }
+
+        onShift(false);
     }
 
     public void SetPopup(Key key, String text) {
@@ -84,14 +86,17 @@ public class Keyboard extends ConstraintLayout {
     public void onKey(char key) {
         if(isShift || isCaps) {
             isShift = false;
+            onShift(isShift || isCaps);
             key = Character.toUpperCase(key);
         }
 
         listener.onKey(key);
     }
 
-    public void onSpecial(String special) {
-        switch (special) {
+    public void onSpecial(Key key) {
+        String text = key.tap.toLowerCase();
+
+        switch (text) {
             case "shift":
                 if (isShift) { // double tap to enable caps lock
                     long elapsed = System.currentTimeMillis() - shiftTime;
@@ -99,13 +104,21 @@ public class Keyboard extends ConstraintLayout {
                     if (elapsed < DOUBLE_TAP_THRESHOLD) {
                         isCaps = true;
                         isShift = false;
+                        key.setText("CAPS");
+                    } else {
+                        isShift = false;
+                        key.setText("shift");
                     }
                 } else if (isCaps) {
                     isCaps = false;
+                    key.setText("shift");
                 } else {
                     isShift = true;
                     shiftTime = System.currentTimeMillis();
+                    key.setText("SHIFT");
                 }
+
+                onShift(isShift || isCaps);
 
                 break;
 
@@ -128,6 +141,16 @@ public class Keyboard extends ConstraintLayout {
             case "cursor_right":
                 listener.onSpecial(KeyEvent.KEYCODE_DPAD_RIGHT);
                 break;
+        }
+    }
+
+    private void onShift(boolean upper) {
+        for(Key key : keys) {
+            if(key.isSpecial) {
+                continue;
+            }
+
+            key.onShift(upper);
         }
     }
 }
