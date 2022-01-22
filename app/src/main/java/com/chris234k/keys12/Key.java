@@ -3,13 +3,8 @@ package com.chris234k.keys12;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.MotionEvent;
-import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 public class Key extends Button {
     public Key(Context context) {
@@ -32,7 +27,7 @@ public class Key extends Button {
         inputs = new String[] {tap, left, up, right, down};
         drawables = new int[] {R.drawable.key_pressed, R.drawable.key_left, R.drawable.key_up, R.drawable.key_right, R.drawable.key_down};
 
-        special = a.getBoolean(R.styleable.Key_special, false);
+        isSpecial = a.getBoolean(R.styleable.Key_special, false);
     }
 
     public Key(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -44,7 +39,7 @@ public class Key extends Button {
     private static final float MIN_DIST = 30f; // TODO @settings
 
     // input processing
-    public boolean special;
+    public boolean isSpecial;
     private static final int TAP = 0, LEFT = 1, UP = 2, RIGHT = 3, DOWN = 4;
     public String tap, left, up, right, down;
     private String[] inputs;
@@ -112,7 +107,7 @@ public class Key extends Button {
                     setPressed(false);
                     keyboard.SetPopup(this, null);
 
-                    if(special) {
+                    if(isSpecial) {
                         processSpecial();
                     } else {
                         processRelease(event.getX(), event.getY());

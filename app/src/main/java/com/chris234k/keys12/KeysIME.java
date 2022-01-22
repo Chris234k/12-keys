@@ -16,8 +16,6 @@ import android.widget.PopupWindow;
 public class KeysIME extends InputMethodService implements KeyListener {
     public KeysIME() {}
 
-
-
     @Override
     public View onCreateInputView() {
         LayoutInflater inflater = getLayoutInflater();

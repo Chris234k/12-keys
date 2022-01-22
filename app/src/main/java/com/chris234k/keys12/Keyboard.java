@@ -26,10 +26,11 @@ public class Keyboard extends ConstraintLayout {
     private KeyListener listener;
     private LinearLayout key_popup;
     private PopupWindow popup_window;
+    private TextView popup_text;
 
     private ArrayList<Key> keys;
 
-    boolean isShift, isCaps; // TODO this may want to live in Key class for UX reasons
+    boolean isShift, isCaps;
     final static long DOUBLE_TAP_THRESHOLD = 300; // in millis
     long shiftTime = 0;
 
@@ -41,6 +42,7 @@ public class Keyboard extends ConstraintLayout {
         popup_window = new PopupWindow(key_popup, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         popup_window.setTouchable(false);
 
+        popup_text = key_popup.findViewById(R.id.key_popup_text);
 
         int childCount = getChildCount();
         keys = new ArrayList<Key>();
@@ -58,11 +60,13 @@ public class Keyboard extends ConstraintLayout {
     }
 
     public void SetPopup(Key key, String text) {
-        TextView textView = key_popup.findViewById(R.id.key_popup_text);
-
         if(text == null) {
             popup_window.dismiss();
         } else {
+            if(key.isSpecial) {
+                text = String.valueOf(key.getText());
+            }
+            
             final float key_height = key.getHeight();
             final float Y_OFFSET = key_height * 1.5f; // give enough vertical space for an "up" input
 
@@ -71,7 +75,7 @@ public class Keyboard extends ConstraintLayout {
 
             popup_window.setWidth(key.getWidth());
             popup_window.showAtLocation(key, Gravity.NO_GRAVITY, x, y);
-            textView.setText(text);
+            popup_text.setText(text);
         }
     }
 
