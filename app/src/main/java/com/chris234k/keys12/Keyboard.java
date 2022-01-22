@@ -24,20 +24,20 @@ public class Keyboard extends ConstraintLayout {
     public Keyboard(Context context, AttributeSet attrs, int defStyleAttr) {super(context, attrs, defStyleAttr);}
 
     private KeyListener listener;
-    private LinearLayout key_popup;
     private PopupWindow popup_window;
     private TextView popup_text;
 
     private ArrayList<Key> keys;
 
     boolean isShift, isCaps;
+    Key shiftKey;
     final static long DOUBLE_TAP_THRESHOLD = 300; // in millis
     long shiftTime = 0;
 
     public void Init(KeyListener keyListener, LayoutInflater inflater) {
         listener = keyListener;
 
-        key_popup = (LinearLayout) inflater.inflate(R.layout.key_popup_layout, null);
+        LinearLayout key_popup = (LinearLayout) inflater.inflate(R.layout.key_popup_layout, null);
 
         popup_window = new PopupWindow(key_popup, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         popup_window.setTouchable(false);
@@ -55,10 +55,16 @@ public class Keyboard extends ConstraintLayout {
                 keys.add(key);
 
                 key.keyboard = this;
+
+                if(key.isSpecial) {
+                    if(key.tap.equals("shift")) {
+                        shiftKey = key;
+                    }
+                }
             }
         }
 
-        onShift(false);
+        onShift(false, false);
     }
 
     public void SetPopup(Key key, String text) {
@@ -86,7 +92,7 @@ public class Keyboard extends ConstraintLayout {
     public void onKey(char key) {
         if(isShift || isCaps) {
             isShift = false;
-            onShift(isShift || isCaps);
+            onShift(isShift, isCaps);
             key = Character.toUpperCase(key);
         }
 
@@ -103,22 +109,17 @@ public class Keyboard extends ConstraintLayout {
 
                     if (elapsed < DOUBLE_TAP_THRESHOLD) {
                         isCaps = true;
-                        isShift = false;
-                        key.setText("CAPS");
-                    } else {
-                        isShift = false;
-                        key.setText("shift");
                     }
+
+                    isShift = false;
                 } else if (isCaps) {
                     isCaps = false;
-                    key.setText("shift");
                 } else {
                     isShift = true;
                     shiftTime = System.currentTimeMillis();
-                    key.setText("SHIFT");
                 }
 
-                onShift(isShift || isCaps);
+                onShift(isShift, isCaps);
 
                 break;
 
@@ -144,13 +145,21 @@ public class Keyboard extends ConstraintLayout {
         }
     }
 
-    private void onShift(boolean upper) {
+    private void onShift(boolean shift, boolean caps) {
+        if(caps) {
+            shiftKey.setText("CAPS");
+        } else if (shift) {
+            shiftKey.setText("SHIFT");
+        } else {
+            shiftKey.setText("shift");
+        }
+
         for(Key key : keys) {
             if(key.isSpecial) {
                 continue;
             }
 
-            key.onShift(upper);
+            key.onShift(shift || caps);
         }
     }
 }

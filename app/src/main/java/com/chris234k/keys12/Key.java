@@ -127,7 +127,6 @@ public class Key extends Button {
         if(upper) {
             setText(text.toUpperCase());
         } else {
-            Log.d("chris", "lower: " + text.toLowerCase());
             setText(text.toLowerCase());
         }
     }
