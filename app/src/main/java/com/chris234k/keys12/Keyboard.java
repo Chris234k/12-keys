@@ -65,6 +65,8 @@ public class Keyboard extends ConstraintLayout {
         } else {
             if(key.isSpecial) {
                 text = String.valueOf(key.getText());
+            } else if (isShift || isCaps) {
+                text = text.toUpperCase();
             }
             
             final float key_height = key.getHeight();
