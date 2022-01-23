@@ -3,11 +3,9 @@ package com.chris234k.keys12;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.Button;
 
@@ -33,6 +31,7 @@ public class Key extends Button {
         drawables = new int[] {R.drawable.key_pressed, R.drawable.key_left, R.drawable.key_up, R.drawable.key_right, R.drawable.key_down};
 
         isSpecial = a.getBoolean(R.styleable.Key_special, false);
+        canRepeat = a.getBoolean(R.styleable.Key_repeats, false);
 
         numberKey = a.getString(R.styleable.Key_number_key);
         numberKeyColor = getResources().getColor(R.color.light_1);
@@ -46,7 +45,9 @@ public class Key extends Button {
 
     // input processing
     public boolean isSpecial;
-    private static final int TAP = 0, LEFT = 1, UP = 2, RIGHT = 3, DOWN = 4;
+    public boolean canRepeat;
+    public static final int TAP = 0, LEFT = 1, UP = 2, RIGHT = 3, DOWN = 4;
+    private int key_state = -1;
     public String tap, left, up, right, down;
     private String[] inputs;
     private int[] drawables;
@@ -88,6 +89,7 @@ public class Key extends Button {
                 isDown = true;
                 setPressed(true);
                 keyboard.SetPopup(this, inputs[TAP]);
+                keyboard.onKeyDown(this);
 
                 startX = event.getX();
                 startY = event.getY();
@@ -137,15 +139,20 @@ public class Key extends Button {
                     setPressed(false);
                     keyboard.SetPopup(this, null);
 
-                    if(isSpecial) {
-                        processSpecial();
-                    } else {
-                        processRelease(event.getX(), event.getY());
-                    }
+                    processRelease(event.getX(), event.getY());
+                    keyboard.onKeyUp(this);
 
                     setBackgroundResource(R.drawable.key_default);
                     return true;
                 }
+                
+            case MotionEvent.ACTION_CANCEL:
+                isDown = false;
+                setPressed(false);
+                keyboard.SetPopup(this, null);
+                setBackgroundResource(R.drawable.key_default);
+
+                return true;
         }
 
         return false;
@@ -160,46 +167,38 @@ public class Key extends Button {
         }
     }
 
-    private void processSpecial() {
-        keyboard.onSpecial(this);
-    }
-
     private void processRelease(float x, float y) {
         float dx = x - startX;
         float dy = y - startY;
 
         float sq_dist = Math.abs((x-startX) + (y-startY));
 
-        char c;
+        key_state = -1;
 
-        if(sq_dist > MIN_DIST) {
+        if(sq_dist > MIN_DIST) { // user has dragged
             // find dir
             if(Math.abs(dx) >= Math.abs(dy)) {
                 if(dx > 0) {
-                    c = getChar(RIGHT);
+                    key_state = RIGHT;
                 } else {
-                    c = getChar(LEFT);
+                    key_state = LEFT;
                 }
             } else {
                 if(dy > 0) { // (0,0) is top left
-                    c = getChar(DOWN);
+                    key_state = DOWN;
                 } else {
-                    c = getChar(UP);
+                    key_state = UP;
                 }
             }
         } else {
-            c = getChar(TAP);
+            key_state = TAP;
         }
-
-        if(c == Character.MIN_VALUE) {
-            return;
-        }
-
-        keyboard.onKey(c);
     }
 
-    private char getChar(int index) {
-        String str = inputs[index];
+    // Get character from the key's current state
+    // processRelease must be called prior to this
+    public char getCharFromState() {
+        String str = inputs[key_state];
         if(str != null && str.length() > 0) {
             return str.charAt(0);
         }

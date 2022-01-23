@@ -1,6 +1,8 @@
 package com.chris234k.keys12;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -28,8 +30,14 @@ public class Keyboard extends ConstraintLayout {
 
     boolean isShift, isCaps;
     Key shiftKey;
-    final static long DOUBLE_TAP_THRESHOLD = 300; // in millis
+    final static long DOUBLE_TAP_MILLIS = 300; // TODO @settings
     long shiftTime = 0;
+
+    // key repeat
+    final static long KEY_REPEAT_INITIAL_MILLIS = 200; // how long you have to hold to trigger a repeat TODO @settings
+    final static long KEY_REPEAT_MILLIS = 50; // rate of subsequent repeats TODO @settings
+    Handler handler;
+    Runnable repeatRunnable;
 
     public void Init(KeyListener keyListener, LayoutInflater inflater) {
         listener = keyListener;
@@ -62,6 +70,11 @@ public class Keyboard extends ConstraintLayout {
         }
 
         onShift(false, false);
+
+        // key repeat message callbacks
+        if(handler == null) {
+            handler = new Handler(Looper.getMainLooper());
+        }
     }
 
     public void SetPopup(Key key, String text) {
@@ -86,17 +99,36 @@ public class Keyboard extends ConstraintLayout {
         }
     }
 
-    public void onKey(char key) {
-        if(isShift || isCaps) {
-            isShift = false;
-            onShift(isShift, isCaps);
-            key = Character.toUpperCase(key);
+    public void onKeyDown(Key key) {
+        if(repeatRunnable != null) {
+            handler.removeCallbacks(repeatRunnable);
         }
 
-        listener.onKey(key);
+        if(key.canRepeat) {
+            sendRepeat(key, KEY_REPEAT_INITIAL_MILLIS);
+        }
     }
 
-    public void onSpecial(Key key) {
+    public void onKeyUp(Key key) {
+        if(key.isSpecial) {
+            onSpecial(key);
+        } else {
+            char c = key.getCharFromState();
+            if(isShift || isCaps) {
+                isShift = false;
+                onShift(isShift, isCaps);
+                c = Character.toUpperCase(c);
+            }
+
+            listener.onKey(c);
+        }
+
+        if(repeatRunnable != null) {
+            handler.removeCallbacks(repeatRunnable);
+        }
+    }
+
+    private void onSpecial(Key key) {
         String text = key.tap.toLowerCase();
 
         switch (text) {
@@ -104,7 +136,7 @@ public class Keyboard extends ConstraintLayout {
                 if (isShift) { // double tap to enable caps lock
                     long elapsed = System.currentTimeMillis() - shiftTime;
 
-                    if (elapsed < DOUBLE_TAP_THRESHOLD) {
+                    if (elapsed < DOUBLE_TAP_MILLIS) {
                         isCaps = true;
                     }
 
@@ -158,5 +190,20 @@ public class Keyboard extends ConstraintLayout {
 
             key.onShift(shift || caps);
         }
+    }
+
+    private void sendRepeat(Key key, long delay) {
+        // store ref to runnable to allow cancelling
+        repeatRunnable = () -> {
+            if(key.isSpecial) {
+                onSpecial(key);
+            } else {
+                onKeyUp(key);
+            }
+
+            sendRepeat(key, KEY_REPEAT_MILLIS);
+        };
+
+        handler.postDelayed(repeatRunnable, delay);
     }
 }
