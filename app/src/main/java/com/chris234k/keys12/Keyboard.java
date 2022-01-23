@@ -1,10 +1,15 @@
 package com.chris234k.keys12;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.util.AttributeSet;
 import android.view.Gravity;
+import android.view.HapticFeedbackConstants;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +17,9 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.preference.PreferenceManager;
 
 import java.util.ArrayList;
 
@@ -25,30 +32,32 @@ public class Keyboard extends ConstraintLayout {
     private KeyListener listener;
     private PopupWindow popup_window;
     private TextView popup_text;
-
     private ArrayList<Key> keys;
 
+    // shift state
     boolean isShift, isCaps;
     Key shiftKey;
-    final static long DOUBLE_TAP_MILLIS = 300; // TODO @settings
     long shiftTime = 0;
 
     // key repeat
-    final static long KEY_REPEAT_INITIAL_MILLIS = 200; // how long you have to hold to trigger a repeat TODO @settings
-    final static long KEY_REPEAT_MILLIS = 50; // rate of subsequent repeats TODO @settings
     Handler handler;
     Runnable repeatRunnable;
+
+    // user preferences
+    int key_repeat_initial_millis = 200; // how long you have to hold to trigger a repeat
+    int key_repeat_millis = 50; // rate of subsequent repeats
+    int double_tap_window_millis = 300;
+    boolean vibration_enabled = true;
 
     public void Init(KeyListener keyListener, LayoutInflater inflater) {
         listener = keyListener;
 
         LinearLayout key_popup = (LinearLayout) inflater.inflate(R.layout.key_popup_layout, null);
-
         popup_window = new PopupWindow(key_popup, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         popup_window.setTouchable(false);
-
         popup_text = key_popup.findViewById(R.id.key_popup_text);
 
+        // setup key visual state
         int childCount = getChildCount();
         keys = new ArrayList<Key>();
 
@@ -75,6 +84,12 @@ public class Keyboard extends ConstraintLayout {
         if(handler == null) {
             handler = new Handler(Looper.getMainLooper());
         }
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        key_repeat_initial_millis = prefs.getInt("key_repeat_initial", 200);
+        key_repeat_millis = prefs.getInt("key_repeat_rate", 50);
+        double_tap_window_millis = prefs.getInt("double_tap_window", 300);
+        vibration_enabled = prefs.getBoolean("use_vibration", true);
     }
 
     public void SetPopup(Key key, String text) {
@@ -105,8 +120,10 @@ public class Keyboard extends ConstraintLayout {
         }
 
         if(key.canRepeat) {
-            sendRepeat(key, KEY_REPEAT_INITIAL_MILLIS);
+            sendRepeat(key, key_repeat_initial_millis);
         }
+
+        vibrate(true);
     }
 
     public void onKeyUp(Key key) {
@@ -126,6 +143,8 @@ public class Keyboard extends ConstraintLayout {
         if(repeatRunnable != null) {
             handler.removeCallbacks(repeatRunnable);
         }
+
+        vibrate(false);
     }
 
     private void onSpecial(Key key) {
@@ -136,7 +155,7 @@ public class Keyboard extends ConstraintLayout {
                 if (isShift) { // double tap to enable caps lock
                     long elapsed = System.currentTimeMillis() - shiftTime;
 
-                    if (elapsed < DOUBLE_TAP_MILLIS) {
+                    if (elapsed < double_tap_window_millis) {
                         isCaps = true;
                     }
 
@@ -201,9 +220,25 @@ public class Keyboard extends ConstraintLayout {
                 onKeyUp(key);
             }
 
-            sendRepeat(key, KEY_REPEAT_MILLIS);
+            sendRepeat(key, key_repeat_millis);
         };
 
         handler.postDelayed(repeatRunnable, delay);
+    }
+
+    private void vibrate(boolean keyDown) {
+        if(vibration_enabled) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
+                if (keyDown) {
+                    performHapticFeedback(HapticFeedbackConstants.KEYBOARD_PRESS);
+                } else {
+                    performHapticFeedback(HapticFeedbackConstants.KEYBOARD_RELEASE);
+                }
+            } else {
+                if(keyDown) { // UX: this feels too strong for both up and down key states
+                    performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+                }
+            }
+        }
     }
 }

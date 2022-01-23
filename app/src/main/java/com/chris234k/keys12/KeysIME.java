@@ -1,11 +1,6 @@
 package com.chris234k.keys12;
 
-import android.content.Context;
 import android.inputmethodservice.InputMethodService;
-import android.os.Build;
-import android.os.VibrationEffect;
-import android.os.Vibrator;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -60,7 +55,6 @@ public class KeysIME extends InputMethodService implements KeyListener {
         }
 
         ic.commitText(String.valueOf(c), 1);
-        vibrate();
     }
 
     public void onSpecial(int keyEvent) {
@@ -70,17 +64,5 @@ public class KeysIME extends InputMethodService implements KeyListener {
         }
 
         sendDownUpKeyEvents(keyEvent);
-        vibrate();
-    }
-
-    private void vibrate() {
-        if(!PreferenceManager.getDefaultSharedPreferences(this).getBoolean("use_vibration", true)) {
-            return;
-        }
-
-        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) { // TODO support vibration on earlier versions of android?
-            v.vibrate(VibrationEffect.createPredefined(VibrationEffect.EFFECT_CLICK)); // TODO @settings
-        }
     }
 }

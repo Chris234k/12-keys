@@ -1,18 +1,55 @@
-<PreferenceScreen
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory>
+    <PreferenceCategory
+        app:title="Layout and Feedback">
+        <SwitchPreferenceCompat
+            app:key="use_flip_phone_layout"
+            app:title="@string/flip_phone_title"
+            app:summaryOff="Layout optimized for key usage"
+            app:summaryOn="Layout similar to flip phones"
+            app:defaultValue="true"/>
+
         <SwitchPreferenceCompat
             app:key="use_vibration"
             app:title="@string/vibration_title"
             app:defaultValue="true"/>
+    </PreferenceCategory>
 
-        <SwitchPreferenceCompat
-            app:key="use_flip_phone_layout"
-            app:title="@string/flip_phone_title"
-            app:summaryOff="Standard layout optimized for key usage"
-            app:summaryOn="A layout similar to flip phones"
-            app:defaultValue="false"/>
+    <PreferenceCategory
+        app:title="Keys">
+        <SeekBarPreference
+            app:key="key_repeat_initial"
+            app:title="Repeat Delay"
+            app:summary="How long you hold before the key begins repeating. In milliseconds."
+            app:defaultValue="200"
+            app:min="100"
+            android:max="1000"
+            app:showSeekBarValue="true"
+            app:seekBarIncrement="50">
+        </SeekBarPreference>
+
+        <SeekBarPreference
+            app:key="key_repeat_rate"
+            app:title="Repeat Rate"
+            app:summary="How quickly a key repeats. In milliseconds."
+            app:defaultValue="50"
+            app:min="10"
+            android:max="500"
+            app:showSeekBarValue="true"
+            app:seekBarIncrement="10">
+        </SeekBarPreference>
+
+        <SeekBarPreference
+            app:key="double_tap_window"
+            app:title="Double Tap"
+            app:summary="Max time in milliseconds for a double tap. Used with shift keys"
+            app:defaultValue="300"
+            app:min="100"
+            android:max="1000"
+            app:showSeekBarValue="true"
+            app:seekBarIncrement="50">
+        </SeekBarPreference>
     </PreferenceCategory>
 
 </PreferenceScreen>
