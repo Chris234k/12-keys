@@ -2,6 +2,10 @@ package com.chris234k.keys12;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -29,15 +33,16 @@ public class Key extends Button {
         drawables = new int[] {R.drawable.key_pressed, R.drawable.key_left, R.drawable.key_up, R.drawable.key_right, R.drawable.key_down};
 
         isSpecial = a.getBoolean(R.styleable.Key_special, false);
+
+        numberKey = a.getString(R.styleable.Key_number_key);
+        numberKeyColor = getResources().getColor(R.color.light_1);
+        numKeyBounds = new Rect();
+        numKeyPaint = new Paint();
     }
 
-    public Key(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
+    public Key(Context context, AttributeSet attrs, int defStyleAttr) {super(context, attrs, defStyleAttr);}
 
     public Keyboard keyboard;
-
-    private static final float MIN_DIST = 30f; // TODO @settings
 
     // input processing
     public boolean isSpecial;
@@ -46,9 +51,33 @@ public class Key extends Button {
     private String[] inputs;
     private int[] drawables;
 
+    // number key drawn separately
+    private String numberKey;
+    private int numberKeyColor;
+    private Rect numKeyBounds;
+    private Paint numKeyPaint;
+
+
     // key state
+    private static final float MIN_DIST = 30f; // TODO @settings
     boolean isDown;
     float startX, startY;
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+
+        if(numberKey != null && !numberKey.isEmpty()) {
+            numKeyPaint.set(getPaint());
+            numKeyPaint.setColor(numberKeyColor);
+            numKeyPaint.getTextBounds(numberKey, 0, numberKey.length(), numKeyBounds);
+
+            float x = (getWidth() / 2.0f) - (numKeyBounds.width() / 2.0f);
+            float y = (getHeight() * 3.0f / 4.0f) + (numKeyBounds.height() / 2.0f);
+
+            canvas.drawText(numberKey, x, y, numKeyPaint);
+        }
+    }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
