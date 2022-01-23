@@ -1,36 +1,18 @@
 <PreferenceScreen
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory
-        app:title="@string/messages_header">
-
-        <EditTextPreference
-            app:key="signature"
-            app:title="@string/signature_title"
-            app:useSimpleSummaryProvider="true"/>
-
-        <ListPreference
-            app:key="reply"
-            app:title="@string/reply_title"
-            app:defaultValue="reply"
-            app:useSimpleSummaryProvider="true"/>
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        app:title="@string/sync_header">
+    <PreferenceCategory>
+        <SwitchPreferenceCompat
+            app:key="use_vibration"
+            app:title="@string/vibration_title"
+            app:defaultValue="true"/>
 
         <SwitchPreferenceCompat
-            app:key="sync"
-            app:title="@string/sync_title"/>
-
-        <SwitchPreferenceCompat
-            app:key="attachment"
-            app:title="@string/attachment_title"
-            app:summaryOn="@string/attachment_summary_on"
-            app:summaryOff="@string/attachment_summary_off"
-            app:dependency="sync"/>
-
+            app:key="use_flip_phone_layout"
+            app:title="@string/flip_phone_title"
+            app:summaryOff="Standard layout optimized for key usage"
+            app:summaryOn="A layout similar to flip phones"
+            app:defaultValue="false"/>
     </PreferenceCategory>
 
 </PreferenceScreen>
