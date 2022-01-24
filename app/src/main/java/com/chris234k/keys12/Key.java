@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.Button;
 
-public class Key extends Button {
+public class Key extends androidx.appcompat.widget.AppCompatButton {
     public Key(Context context) {
         super(context);
     }
