@@ -10,4 +10,5 @@
     <color name="dark_2">#424242</color>
     <color name="light_0">#212121</color>
     <color name="light_1">#9E9E9E</color>
+    <color name="dark_accent">#383838</color>
 </resources>

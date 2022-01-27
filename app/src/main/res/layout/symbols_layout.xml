@@ -24,14 +24,12 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/key_default"
-        android:text="\@-_/"
+        android:text="!="
         android:textColor="@color/light_font"
         app:down="1"
-        app:left="-"
+        app:left="="
         app:number_key="1"
-        app:right="/"
-        app:tap="\@"
-        app:up="_"
+        app:tap="!"
         tools:layout_editor_absoluteX="88dp"
         tools:layout_editor_absoluteY="26dp" />
 
@@ -40,13 +38,12 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/key_default"
-        android:text="ABC"
+        android:text="\@+"
         android:textColor="@color/light_font"
         app:down="2"
-        app:left="b"
+        app:left="+"
         app:number_key="2"
-        app:tap="a"
-        app:up="c"
+        app:tap="\@"
         tools:layout_editor_absoluteX="176dp"
         tools:layout_editor_absoluteY="26dp" />
 
@@ -68,13 +65,12 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/key_default"
-        android:text="DEF"
+        android:text="#~"
         android:textColor="@color/light_font"
         app:down="3"
-        app:left="e"
+        app:left="~"
         app:number_key="3"
-        app:tap="d"
-        app:up="f"
+        app:tap="#"
         tools:layout_editor_absoluteX="264dp"
         tools:layout_editor_absoluteY="26dp" />
 
@@ -122,13 +118,12 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/key_default"
-        android:text="GHI"
+        android:text="$"
         android:textColor="@color/light_font"
         app:down="4"
-        app:left="h"
+        app:left="`"
         app:number_key="4"
-        app:tap="g"
-        app:up="i"
+        app:tap="$`"
         tools:layout_editor_absoluteX="88dp"
         tools:layout_editor_absoluteY="48dp" />
 
@@ -137,13 +132,12 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/key_default"
-        android:text="JKL"
+        android:text="%|"
         android:textColor="@color/light_font"
         app:down="5"
-        app:left="k"
+        app:left="|"
         app:number_key="5"
-        app:tap="j"
-        app:up="l"
+        app:tap="%"
         tools:layout_editor_absoluteX="143dp"
         tools:layout_editor_absoluteY="212dp" />
 
@@ -152,13 +146,13 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/key_default"
-        android:text="MNO"
+        android:text="^()"
         android:textColor="@color/light_font"
         app:down="6"
-        app:left="n"
+        app:left="("
         app:number_key="6"
-        app:tap="m"
-        app:up="o"
+        app:tap="^"
+        app:up=")"
         tools:layout_editor_absoluteX="264dp"
         tools:layout_editor_absoluteY="48dp" />
 
@@ -179,37 +173,24 @@
         android:id="@+id/row_three"
         android:layout_width="0dp"
         android:layout_height="@dimen/key_height"
-        app:constraint_referenced_ids="key18,key9,key10,key11,key17"
+        app:constraint_referenced_ids="key12,key9,key10,key11,key17"
         app:flow_verticalStyle="spread_inside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/row_two"></androidx.constraintlayout.helper.widget.Flow>
 
     <com.chris234k.keys12.Key
-        android:id="@+id/key18"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/key_default"
-        android:text="␣"
-        android:textColor="@color/light_font"
-        app:special="true"
-        app:tap="space"
-        tools:layout_editor_absoluteX="250dp"
-        tools:layout_editor_absoluteY="345dp" />
-
-    <com.chris234k.keys12.Key
         android:id="@+id/key9"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/key_default"
-        android:text="PQRS"
+        android:text="&amp;{}"
         android:textColor="@color/light_font"
         app:down="7"
-        app:left="q"
+        app:left="{"
         app:number_key="7"
-        app:right="s"
-        app:tap="p"
-        app:up="r"
+        app:tap="&amp;"
+        app:up="}"
         tools:layout_editor_absoluteX="74dp"
         tools:layout_editor_absoluteY="345dp" />
 
@@ -218,29 +199,39 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/key_default"
-        android:text="TUV"
+        android:text="*[]"
         android:textColor="@color/light_font"
         app:down="8"
-        app:left="u"
+        app:left="["
         app:number_key="8"
-        app:tap="t"
-        app:up="v"
+        app:tap="*"
+        app:up="]"
         tools:layout_editor_absoluteX="15dp"
         tools:layout_editor_absoluteY="345dp" />
+
+    <com.chris234k.keys12.Key
+        android:id="@+id/key12"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/key_default"
+        android:text="shift"
+        android:textColor="@color/light_font"
+        app:special="true"
+        app:tap="shift"
+        tools:layout_editor_absoluteX="277dp"
+        tools:layout_editor_absoluteY="151dp" />
 
     <com.chris234k.keys12.Key
         android:id="@+id/key11"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/key_default"
-        android:text="WXYZ"
+        android:text="/\"
         android:textColor="@color/light_font"
         app:down="9"
-        app:left="x"
+        app:left="\"
         app:number_key="9"
-        app:right="z"
-        app:tap="w"
-        app:up="y"
+        app:tap="/"
         tools:layout_editor_absoluteX="103dp"
         tools:layout_editor_absoluteY="345dp" />
 
@@ -260,7 +251,7 @@
         android:id="@+id/row_four"
         android:layout_width="0dp"
         android:layout_height="@dimen/key_height"
-        app:constraint_referenced_ids="key20,key12,key13,key14,key19"
+        app:constraint_referenced_ids="key20,key22,key13,key14,key19"
         app:flow_verticalStyle="spread_inside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -272,24 +263,12 @@
         android:layout_height="0dp"
         android:background="@drawable/key_default"
         android:backgroundTint="@color/dark_accent"
-        android:text="SYM"
+        android:text="ABC"
         android:textColor="@color/light_font"
         app:special="true"
-        app:tap="swap_symbols"
+        app:tap="swap_letters"
         tools:layout_editor_absoluteX="352dp"
         tools:layout_editor_absoluteY="144dp" />
-
-    <com.chris234k.keys12.Key
-        android:id="@+id/key12"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/key_default"
-        android:text="shift"
-        android:textColor="@color/light_font"
-        app:special="true"
-        app:tap="shift"
-        tools:layout_editor_absoluteX="277dp"
-        tools:layout_editor_absoluteY="151dp" />
 
     <com.chris234k.keys12.Key
         android:id="@+id/key13"
@@ -306,6 +285,20 @@
         app:up=":"
         tools:layout_editor_absoluteX="176dp"
         tools:layout_editor_absoluteY="148dp" />
+
+    <com.chris234k.keys12.Key
+        android:id="@+id/key22"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/key_default"
+        android:text="\@-_/"
+        android:textColor="@color/light_font"
+        app:left="-"
+        app:right="/"
+        app:tap="\@"
+        app:up="_"
+        tools:layout_editor_absoluteX="88dp"
+        tools:layout_editor_absoluteY="26dp" />
 
     <com.chris234k.keys12.Key
         android:id="@+id/key14"

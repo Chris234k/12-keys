@@ -21,7 +21,7 @@
         <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/layout/key_popup_layout.xml" value="0.33" />
         <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/layout/keyboard_layout.xml" value="0.5" />
         <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/layout/keyboard_optimized_layout.xml" value="0.5" />
-        <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/layout/keyboard_usage_frequency_layout.xml" value="0.67" />
+        <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/layout/keyboard_usage_frequency_layout.xml" value="0.5" />
         <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/layout/keys_layout.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/layout/keys_view.xml" value="0.14270833333333333" />
         <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/layout/sample_key.xml" value="0.33559782608695654" />
@@ -29,6 +29,8 @@
         <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/layout/sample_keys_view.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/layout/sample_my_view.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/layout/settings_activity.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/layout/symbols_layout.xml" value="0.5" />
+        <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/layout/symbols_usage_frequency.xml" value="0.5" />
         <entry key="..\:/Users/Chris/GitHub/12-keys/app/src/main/res/xml/root_preferences.xml" value="0.33" />
       </map>
     </option>

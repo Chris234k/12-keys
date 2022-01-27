@@ -14,6 +14,7 @@ public class KeysIME extends InputMethodService implements KeyListener {
     // track current keyboard, update if preferences change
     Keyboard active_keyboard;
     int keyboard_id;
+    Keyboard symbols;
 
     @Override
     public View onCreateInputView() {
@@ -40,8 +41,11 @@ public class KeysIME extends InputMethodService implements KeyListener {
             return active_keyboard;
         } else {
             LayoutInflater inflater = getLayoutInflater();
-            Keyboard newKeyboard = (Keyboard) getLayoutInflater().inflate(layout, null);
+            Keyboard newKeyboard = (Keyboard) inflater.inflate(layout, null);
             newKeyboard.Init(this, inflater);
+
+            symbols = (Keyboard) inflater.inflate(R.layout.symbols_layout, null);
+            symbols.Init(this, inflater);
 
             return newKeyboard;
         }
@@ -57,6 +61,7 @@ public class KeysIME extends InputMethodService implements KeyListener {
         ic.commitText(String.valueOf(c), 1);
     }
 
+    @Override
     public void onSpecial(int keyEvent) {
         InputConnection ic = getCurrentInputConnection();
         if(ic == null) {
@@ -64,5 +69,19 @@ public class KeysIME extends InputMethodService implements KeyListener {
         }
 
         sendDownUpKeyEvents(keyEvent);
+    }
+
+    @Override
+    public void onSwitchLayout(boolean showLetters) {
+        // TODO TODO TODO the symbols view doesn't seem to exist when created / shown this way
+        // inflating from this method doesn't seem to do anything either
+
+        if(showLetters){
+            active_keyboard.setVisibility(View.VISIBLE);
+            symbols.setVisibility(View.GONE);
+        } else {
+            active_keyboard.setVisibility(View.GONE);
+            symbols.setVisibility(View.VISIBLE);
+        }
     }
 }

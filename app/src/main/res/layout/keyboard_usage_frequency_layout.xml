@@ -267,10 +267,11 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/key_default"
-        android:text="⏎"
+        android:backgroundTint="@color/dark_accent"
+        android:text="SYM"
         android:textColor="@color/light_font"
         app:special="true"
-        app:tap="return"
+        app:tap="swap_symbols"
         tools:layout_editor_absoluteX="352dp"
         tools:layout_editor_absoluteY="144dp" />
 

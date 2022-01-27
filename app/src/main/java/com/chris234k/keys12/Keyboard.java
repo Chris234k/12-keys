@@ -190,6 +190,14 @@ public class Keyboard extends ConstraintLayout {
             case "cursor_right":
                 listener.onSpecial(KeyEvent.KEYCODE_DPAD_RIGHT);
                 break;
+
+
+            case "swap_symbols":
+                listener.onSwitchLayout(false);
+                    break;
+            case "swap_letters":
+                listener.onSwitchLayout(true);
+                break;
         }
     }
 
