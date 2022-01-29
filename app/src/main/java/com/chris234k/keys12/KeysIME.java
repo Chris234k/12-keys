@@ -73,15 +73,10 @@ public class KeysIME extends InputMethodService implements KeyListener {
 
     @Override
     public void onSwitchLayout(boolean showLetters) {
-        // TODO TODO TODO the symbols view doesn't seem to exist when created / shown this way
-        // inflating from this method doesn't seem to do anything either
-
         if(showLetters){
-            active_keyboard.setVisibility(View.VISIBLE);
-            symbols.setVisibility(View.GONE);
+            setInputView(active_keyboard);
         } else {
-            active_keyboard.setVisibility(View.GONE);
-            symbols.setVisibility(View.VISIBLE);
+            setInputView(symbols);
         }
     }
 }
