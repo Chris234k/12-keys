@@ -5,8 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.VibrationEffect;
-import android.os.Vibrator;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.HapticFeedbackConstants;
@@ -17,7 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.preference.PreferenceManager;
 
@@ -35,13 +32,13 @@ public class Keyboard extends ConstraintLayout {
     private ArrayList<Key> keys;
 
     // shift state
-    boolean isShift, isCaps;
-    Key shiftKey;
-    long shiftTime = 0;
+    boolean is_shift, is_caps;
+    Key shift_key;
+    long shift_time = 0;
 
     // key repeat
     Handler handler;
-    Runnable repeatRunnable;
+    Runnable repeat_runnable;
 
     // user preferences
     int key_repeat_initial_millis = 200; // how long you have to hold to trigger a repeat
@@ -68,11 +65,11 @@ public class Keyboard extends ConstraintLayout {
                 Key key = (Key)v;
                 keys.add(key);
 
-                key.keyboard = this;
+                key.parent_keyboard = this;
 
-                if(key.isSpecial) {
-                    if(key.tap.equals("shift")) {
-                        shiftKey = key;
+                if(key.is_special) {
+                    if(key.getTextForState(Key.TAP).equals("shift")) {
+                        shift_key = key;
                     }
                 }
             }
@@ -96,9 +93,9 @@ public class Keyboard extends ConstraintLayout {
         if(text == null) {
             popup_window.dismiss();
         } else {
-            if(key.isSpecial) {
+            if(key.is_special) {
                 text = String.valueOf(key.getText());
-            } else if (isShift || isCaps) {
+            } else if (is_shift || is_caps) {
                 text = text.toUpperCase();
             }
             
@@ -114,60 +111,60 @@ public class Keyboard extends ConstraintLayout {
         }
     }
 
-    public void onKeyDown(Key key) {
-        if(repeatRunnable != null) {
-            handler.removeCallbacks(repeatRunnable);
+    public void OnKeyDown(Key key) {
+        if(repeat_runnable != null) {
+            handler.removeCallbacks(repeat_runnable);
         }
 
-        if(key.canRepeat) {
+        if(key.can_repeat) {
             sendRepeat(key, key_repeat_initial_millis);
         }
 
         vibrate(true);
     }
 
-    public void onKeyUp(Key key) {
-        if(key.isSpecial) {
+    public void OnKeyUp(Key key) {
+        if(key.is_special) {
             onSpecial(key);
         } else {
-            char c = key.getCharFromState();
-            if(isShift || isCaps) {
-                isShift = false;
-                onShift(isShift, isCaps);
+            char c = key.getCharForCurrentState();
+            if(is_shift || is_caps) {
+                is_shift = false;
+                onShift(is_shift, is_caps);
                 c = Character.toUpperCase(c);
             }
 
             listener.onKey(c);
         }
 
-        if(repeatRunnable != null) {
-            handler.removeCallbacks(repeatRunnable);
+        if(repeat_runnable != null) {
+            handler.removeCallbacks(repeat_runnable);
         }
 
         vibrate(false);
     }
 
     private void onSpecial(Key key) {
-        String text = key.tap.toLowerCase();
+        String text = key.getTextForCurrentState();
 
         switch (text) {
             case "shift":
-                if (isShift) { // double tap to enable caps lock
-                    long elapsed = System.currentTimeMillis() - shiftTime;
+                if (is_shift) { // double tap to enable caps lock
+                    long elapsed = System.currentTimeMillis() - shift_time;
 
                     if (elapsed < double_tap_window_millis) {
-                        isCaps = true;
+                        is_caps = true;
                     }
 
-                    isShift = false;
-                } else if (isCaps) {
-                    isCaps = false;
+                    is_shift = false;
+                } else if (is_caps) {
+                    is_caps = false;
                 } else {
-                    isShift = true;
-                    shiftTime = System.currentTimeMillis();
+                    is_shift = true;
+                    shift_time = System.currentTimeMillis();
                 }
 
-                onShift(isShift, isCaps);
+                onShift(is_shift, is_caps);
 
                 break;
 
@@ -203,15 +200,15 @@ public class Keyboard extends ConstraintLayout {
 
     private void onShift(boolean shift, boolean caps) {
         if(caps) {
-            shiftKey.setText("CAPS");
+            shift_key.setText("CAPS");
         } else if (shift) {
-            shiftKey.setText("SHIFT");
+            shift_key.setText("SHIFT");
         } else {
-            shiftKey.setText("shift");
+            shift_key.setText("shift");
         }
 
         for(Key key : keys) {
-            if(key.isSpecial) {
+            if(key.is_special) {
                 continue;
             }
 
@@ -221,17 +218,17 @@ public class Keyboard extends ConstraintLayout {
 
     private void sendRepeat(Key key, long delay) {
         // store ref to runnable to allow cancelling
-        repeatRunnable = () -> {
-            if(key.isSpecial) {
+        repeat_runnable = () -> {
+            if(key.is_special) {
                 onSpecial(key);
             } else {
-                onKeyUp(key);
+                OnKeyUp(key);
             }
 
             sendRepeat(key, key_repeat_millis);
         };
 
-        handler.postDelayed(repeatRunnable, delay);
+        handler.postDelayed(repeat_runnable, delay);
     }
 
     private void vibrate(boolean keyDown) {

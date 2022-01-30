@@ -21,42 +21,43 @@ public class Key extends Button {
                 R.styleable.Key,
                 0, 0);
 
-        tap = a.getString(R.styleable.Key_tap);
-        left = a.getString(R.styleable.Key_left);
-        up = a.getString(R.styleable.Key_up);
-        right = a.getString(R.styleable.Key_right);
-        down = a.getString(R.styleable.Key_down);
+        String tap = a.getString(R.styleable.Key_tap);
+        String left = a.getString(R.styleable.Key_left);
+        String up = a.getString(R.styleable.Key_up);
+        String right = a.getString(R.styleable.Key_right);
+        String down = a.getString(R.styleable.Key_down);
 
         inputs = new String[] {tap, left, up, right, down};
         drawables = new int[] {R.drawable.key_pressed, R.drawable.key_left, R.drawable.key_up, R.drawable.key_right, R.drawable.key_down};
 
-        isSpecial = a.getBoolean(R.styleable.Key_special, false);
-        canRepeat = a.getBoolean(R.styleable.Key_repeats, false);
+        is_special = a.getBoolean(R.styleable.Key_special, false);
+        can_repeat = a.getBoolean(R.styleable.Key_repeats, false);
 
-        numberKey = a.getString(R.styleable.Key_number_key);
-        numberKeyColor = getResources().getColor(R.color.light_1);
-        numKeyBounds = new Rect();
-        numKeyPaint = new Paint();
+        number_key = a.getString(R.styleable.Key_number_key);
+        number_key_color = getResources().getColor(R.color.light_1);
+        number_key_bounds = new Rect();
+        number_key_paint = new Paint();
     }
 
     public Key(Context context, AttributeSet attrs, int defStyleAttr) {super(context, attrs, defStyleAttr);}
 
-    public Keyboard keyboard;
+    public Keyboard parent_keyboard;
 
-    // input processing
-    public boolean isSpecial;
-    public boolean canRepeat;
-    public static final int TAP = 0, LEFT = 1, UP = 2, RIGHT = 3, DOWN = 4;
-    private int key_state = -1;
-    public String tap, left, up, right, down;
+    // modifiers
+    public boolean is_special;
+    public boolean can_repeat;
+
+    // key state
+    public static final int NONE = -1, TAP = 0, LEFT = 1, UP = 2, RIGHT = 3, DOWN = 4;
+    private int key_state = NONE;
     private String[] inputs;
     private int[] drawables;
 
     // number key drawn separately
-    private String numberKey;
-    private int numberKeyColor;
-    private Rect numKeyBounds;
-    private Paint numKeyPaint;
+    private String number_key;
+    private int number_key_color;
+    private Rect number_key_bounds;
+    private Paint number_key_paint;
 
 
     // key state
@@ -68,15 +69,15 @@ public class Key extends Button {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        if(numberKey != null && !numberKey.isEmpty()) {
-            numKeyPaint.set(getPaint());
-            numKeyPaint.setColor(numberKeyColor);
-            numKeyPaint.getTextBounds(numberKey, 0, numberKey.length(), numKeyBounds);
+        if(number_key != null && !number_key.isEmpty()) {
+            number_key_paint.set(getPaint());
+            number_key_paint.setColor(number_key_color);
+            number_key_paint.getTextBounds(number_key, 0, number_key.length(), number_key_bounds);
 
-            float x = (getWidth() / 2.0f) - (numKeyBounds.width() / 2.0f);
-            float y = (getHeight() * 3.0f / 4.0f) + (numKeyBounds.height() / 2.0f);
+            float x = (getWidth() / 2.0f) - (number_key_bounds.width() / 2.0f);
+            float y = (getHeight() * 3.0f / 4.0f) + (number_key_bounds.height() / 2.0f);
 
-            canvas.drawText(numberKey, x, y, numKeyPaint);
+            canvas.drawText(number_key, x, y, number_key_paint);
         }
     }
 
@@ -86,10 +87,11 @@ public class Key extends Button {
 
         switch(action) {
             case MotionEvent.ACTION_DOWN:
+                key_state = TAP;
                 isDown = true;
                 setPressed(true);
-                keyboard.SetPopup(this, inputs[TAP]);
-                keyboard.onKeyDown(this);
+                parent_keyboard.SetPopup(this, inputs[TAP]);
+                parent_keyboard.OnKeyDown(this);
 
                 startX = event.getX();
                 startY = event.getY();
@@ -127,7 +129,7 @@ public class Key extends Button {
                     }
 
                     setBackgroundResource(drawables[key_state]);
-                    keyboard.SetPopup(this, inputs[key_state]);
+                    parent_keyboard.SetPopup(this, inputs[key_state]);
 
                     refreshDrawableState();
                 }
@@ -137,19 +139,22 @@ public class Key extends Button {
                 if (isDown) {
                     isDown = false;
                     setPressed(false);
-                    keyboard.SetPopup(this, null);
+                    parent_keyboard.SetPopup(this, null);
 
                     processRelease(event.getX(), event.getY());
-                    keyboard.onKeyUp(this);
+                    parent_keyboard.OnKeyUp(this);
 
                     setBackgroundResource(R.drawable.key_default);
+
+                    key_state = NONE;
                     return true;
                 }
                 
             case MotionEvent.ACTION_CANCEL:
+                key_state = NONE;
                 isDown = false;
                 setPressed(false);
-                keyboard.SetPopup(this, null);
+                parent_keyboard.SetPopup(this, null);
                 setBackgroundResource(R.drawable.key_default);
 
                 return true;
@@ -195,14 +200,33 @@ public class Key extends Button {
         }
     }
 
+
     // Get character from the key's current state
     // processRelease must be called prior to this
-    public char getCharFromState() {
-        String str = inputs[key_state];
+    public char getCharForCurrentState() {
+        String str = getTextForCurrentState();
         if(str != null && str.length() > 0) {
             return str.charAt(0);
         }
 
         return Character.MIN_VALUE;
+    }
+
+    public String getTextForCurrentState() {
+        String text = "";
+
+        if(key_state != NONE) {
+            text = getTextForState(key_state);
+        }
+
+        if(text == null) {
+            text = "";
+        }
+
+        return text;
+    }
+
+    public String getTextForState(int state) {
+        return inputs[state];
     }
 }
