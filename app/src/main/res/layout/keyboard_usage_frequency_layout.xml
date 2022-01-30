@@ -109,9 +109,13 @@
         android:background="@drawable/key_default"
         android:text="&lt;"
         android:textColor="@color/light_font"
+        app:down="cursor_down"
+        app:left="cursor_left"
         app:repeats="true"
+        app:right="cursor_right"
         app:special="true"
         app:tap="cursor_left"
+        app:up="cursor_up"
         tools:layout_editor_absoluteX="235dp"
         tools:layout_editor_absoluteY="207dp" />
 
@@ -167,9 +171,13 @@
         android:background="@drawable/key_default"
         android:text="&gt;"
         android:textColor="@color/light_font"
+        app:down="cursor_down"
+        app:left="cursor_left"
         app:repeats="true"
+        app:right="cursor_right"
         app:special="true"
         app:tap="cursor_right"
+        app:up="cursor_up"
         tools:layout_editor_absoluteX="352dp"
         tools:layout_editor_absoluteY="48dp" />
 

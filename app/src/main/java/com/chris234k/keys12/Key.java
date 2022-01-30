@@ -61,9 +61,9 @@ public class Key extends Button {
 
 
     // key state
-    private static final float MIN_DIST = 30f; // TODO @settings
-    boolean isDown;
-    float startX, startY;
+    private static final float MIN_DIST_SQ = 30f; // TODO @settings
+    boolean is_pressed;
+    float tap_start_x, tap_start_y;
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -87,61 +87,41 @@ public class Key extends Button {
 
         switch(action) {
             case MotionEvent.ACTION_DOWN:
-                key_state = TAP;
-                isDown = true;
+                is_pressed = true;
                 setPressed(true);
+
+                key_state = TAP;
+
+                tap_start_x = event.getX();
+                tap_start_y = event.getY();
+
+
                 parent_keyboard.SetPopup(this, inputs[TAP]);
                 parent_keyboard.OnKeyDown(this);
-
-                startX = event.getX();
-                startY = event.getY();
 
                 setBackgroundResource(R.drawable.key_pressed);
 
                 return true;
 
             case MotionEvent.ACTION_MOVE:
-                if(isDown) {
-                    float x = event.getX();
-                    float y = event.getY();
-                    float sq_dist = Math.abs((x-startX) + (y-startY));
+                if(is_pressed) {
+                    key_state = detectState(tap_start_x, tap_start_y, event.getX(), event.getY());
 
-                    float dx = x - startX;
-                    float dy = y - startY;
-
-                    int key_state = 0;
-
-                    if(sq_dist > MIN_DIST) { // TODO TODO TODO duplicate code of process inputs
-                        if(Math.abs(dx) >= Math.abs(dy)) {
-                            if(dx > 0) {
-                                key_state = RIGHT;
-                            } else {
-                                key_state = LEFT;
-                            }
-                        } else {
-                            if(dy > 0) { // (0,0) is top left
-                                key_state = DOWN;
-
-                            } else {
-                                key_state = UP;
-                            }
-                        }
-                    }
-
-                    setBackgroundResource(drawables[key_state]);
                     parent_keyboard.SetPopup(this, inputs[key_state]);
+                    setBackgroundResource(drawables[key_state]);
 
                     refreshDrawableState();
                 }
                 return true;
 
             case MotionEvent.ACTION_UP:
-                if (isDown) {
-                    isDown = false;
+                if (is_pressed) {
+                    is_pressed = false;
                     setPressed(false);
-                    parent_keyboard.SetPopup(this, null);
 
-                    processRelease(event.getX(), event.getY());
+                    key_state = detectState(tap_start_x, tap_start_y, event.getX(), event.getY());
+
+                    parent_keyboard.SetPopup(this, null);
                     parent_keyboard.OnKeyUp(this);
 
                     setBackgroundResource(R.drawable.key_default);
@@ -152,7 +132,7 @@ public class Key extends Button {
                 
             case MotionEvent.ACTION_CANCEL:
                 key_state = NONE;
-                isDown = false;
+                is_pressed = false;
                 setPressed(false);
                 parent_keyboard.SetPopup(this, null);
                 setBackgroundResource(R.drawable.key_default);
@@ -172,37 +152,35 @@ public class Key extends Button {
         }
     }
 
-    private void processRelease(float x, float y) {
-        float dx = x - startX;
-        float dy = y - startY;
+    private int detectState(float start_x, float start_y, float x, float y) {
+        float sq_dist = Math.abs((x-start_x) + (y-start_y));
+        int state = TAP;
 
-        float sq_dist = Math.abs((x-startX) + (y-startY));
+        if(sq_dist > MIN_DIST_SQ) { // user has dragged
+            float dx = x - start_x;
+            float dy = y - start_y;
 
-        key_state = -1;
-
-        if(sq_dist > MIN_DIST) { // user has dragged
             // find dir
             if(Math.abs(dx) >= Math.abs(dy)) {
                 if(dx > 0) {
-                    key_state = RIGHT;
+                    state = RIGHT;
                 } else {
-                    key_state = LEFT;
+                    state = LEFT;
                 }
             } else {
                 if(dy > 0) { // (0,0) is top left
-                    key_state = DOWN;
+                    state = DOWN;
                 } else {
-                    key_state = UP;
+                    state = UP;
                 }
             }
-        } else {
-            key_state = TAP;
         }
+
+        return state;
     }
 
 
     // Get character from the key's current state
-    // processRelease must be called prior to this
     public char getCharForCurrentState() {
         String str = getTextForCurrentState();
         if(str != null && str.length() > 0) {

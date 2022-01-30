@@ -1,7 +1,6 @@
 package com.chris234k.keys12;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;

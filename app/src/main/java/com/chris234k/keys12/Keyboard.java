@@ -188,6 +188,14 @@ public class Keyboard extends ConstraintLayout {
                 listener.onSpecial(KeyEvent.KEYCODE_DPAD_RIGHT);
                 break;
 
+            case "cursor_up":
+                listener.onSpecial(KeyEvent.KEYCODE_DPAD_UP);
+                break;
+
+            case "cursor_down":
+                listener.onSpecial(KeyEvent.KEYCODE_DPAD_DOWN);
+                break;
+
 
             case "swap_symbols":
                 listener.onSwitchLayout(false);
