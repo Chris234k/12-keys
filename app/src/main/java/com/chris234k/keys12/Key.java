@@ -8,6 +8,7 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.Button;
+import java.lang.Math;
 
 public class Key extends Button {
     public Key(Context context) {
@@ -60,8 +61,9 @@ public class Key extends Button {
     private Paint number_key_paint;
 
 
+
     // key state
-    private static final float MIN_DIST_SQ = 30f; // TODO @settings
+    private static final float MIN_DIST_SQ = 900f;
     boolean is_pressed;
     float tap_start_x, tap_start_y;
 
@@ -153,26 +155,28 @@ public class Key extends Button {
     }
 
     private int detectState(float start_x, float start_y, float x, float y) {
-        float sq_dist = Math.abs((x-start_x) + (y-start_y));
+        float dx = x - start_x;
+        float dy = y - start_y;
+
+        double sq_dist = (dx*dx) + (dy*dy);
         int state = TAP;
 
         if(sq_dist > MIN_DIST_SQ) { // user has dragged
-            float dx = x - start_x;
-            float dy = y - start_y;
-
-            // find dir
-            if(Math.abs(dx) >= Math.abs(dy)) {
-                if(dx > 0) {
-                    state = RIGHT;
-                } else {
-                    state = LEFT;
-                }
+            double angle = Math.toDegrees(Math.atan2(dy, dx));
+            if(angle < 0) {
+                angle += 360;
+            }
+            
+            // left / right: 60 degrees
+            // top / bottom: 120 degrees
+            if(angle >= 330 || angle < 30) {
+                return RIGHT;
+            } else if (angle >= 30 && angle < 150) {
+                return DOWN;
+            } else if (angle >= 150 && angle < 210) {
+                return LEFT;
             } else {
-                if(dy > 0) { // (0,0) is top left
-                    state = DOWN;
-                } else {
-                    state = UP;
-                }
+                return UP;
             }
         }
 
