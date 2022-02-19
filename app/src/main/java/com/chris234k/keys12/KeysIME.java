@@ -32,7 +32,7 @@ public class KeysIME extends InputMethodService implements KeyListener {
 
     private Keyboard getInputView() {
         int layout = R.layout.keyboard_usage_frequency_layout;
-        if(PreferenceManager.getDefaultSharedPreferences(this).getBoolean("use_flip_phone_layout", false)) {
+        if(PreferenceManager.getDefaultSharedPreferences(this).getBoolean("use_flip_phone_layout", true)) {
             layout = R.layout.keyboard_layout;
         }
 
