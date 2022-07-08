@@ -52,11 +52,16 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/key_default"
+        android:backgroundTint="@color/dark_accent"
         android:text="DEL"
         android:textColor="@color/light_font"
+        app:down="delete"
+        app:left="delete"
         app:repeats="true"
+        app:right="delete"
         app:special="true"
         app:tap="delete"
+        app:up="delete"
         tools:layout_editor_absoluteX="352dp"
         tools:layout_editor_absoluteY="26dp" />
 
@@ -79,11 +84,16 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/key_default"
+        android:backgroundTint="@color/dark_accent"
         android:text="DEL"
         android:textColor="@color/light_font"
+        app:down="delete"
+        app:left="delete"
         app:repeats="true"
+        app:right="delete"
         app:special="true"
         app:tap="delete"
+        app:up="delete"
         tools:layout_editor_absoluteX="74dp"
         tools:layout_editor_absoluteY="26dp" />
 
@@ -107,9 +117,13 @@
         android:background="@drawable/key_default"
         android:text="&lt;"
         android:textColor="@color/light_font"
+        app:down="cursor_down"
+        app:left="cursor_left"
         app:repeats="true"
+        app:right="cursor_right"
         app:special="true"
         app:tap="cursor_left"
+        app:up="cursor_up"
         tools:layout_editor_absoluteX="235dp"
         tools:layout_editor_absoluteY="207dp" />
 
@@ -163,9 +177,13 @@
         android:background="@drawable/key_default"
         android:text="&gt;"
         android:textColor="@color/light_font"
+        app:down="cursor_down"
+        app:left="cursor_left"
         app:repeats="true"
+        app:right="cursor_right"
         app:special="true"
         app:tap="cursor_right"
+        app:up="cursor_up"
         tools:layout_editor_absoluteX="352dp"
         tools:layout_editor_absoluteY="48dp" />
 
@@ -214,10 +232,15 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/key_default"
+        android:backgroundTint="@color/dark_accent"
         android:text="shift"
         android:textColor="@color/light_font"
+        app:down="shift"
+        app:left="shift"
+        app:right="shift"
         app:special="true"
         app:tap="shift"
+        app:up="shift"
         tools:layout_editor_absoluteX="277dp"
         tools:layout_editor_absoluteY="151dp" />
 
@@ -226,12 +249,14 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/key_default"
-        android:text="/\\"
+        android:text="/\\&lt;&gt;"
         android:textColor="@color/light_font"
         app:down="9"
         app:left="\\"
         app:number_key="9"
+        app:right="&gt;"
         app:tap="/"
+        app:up="&lt;"
         tools:layout_editor_absoluteX="103dp"
         tools:layout_editor_absoluteY="345dp" />
 
@@ -240,10 +265,15 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/key_default"
+        android:backgroundTint="@color/dark_accent"
         android:text="␣"
         android:textColor="@color/light_font"
+        app:down="space"
+        app:left="space"
+        app:right="space"
         app:special="true"
         app:tap="space"
+        app:up="space"
         tools:layout_editor_absoluteX="191dp"
         tools:layout_editor_absoluteY="345dp" />
 
@@ -265,8 +295,12 @@
         android:backgroundTint="@color/dark_accent"
         android:text="ABC"
         android:textColor="@color/light_font"
+        app:down="swap_letters"
+        app:left="swap_letters"
+        app:right="swap_letters"
         app:special="true"
         app:tap="swap_letters"
+        app:up="swap_letters"
         tools:layout_editor_absoluteX="352dp"
         tools:layout_editor_absoluteY="144dp" />
 
@@ -319,10 +353,15 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/key_default"
+        android:backgroundTint="@color/dark_accent"
         android:text="⏎"
         android:textColor="@color/light_font"
+        app:down="return"
+        app:left="return"
+        app:right="return"
         app:special="true"
         app:tap="return"
+        app:up="return"
         tools:layout_editor_absoluteX="338dp"
         tools:layout_editor_absoluteY="148dp" />
 
