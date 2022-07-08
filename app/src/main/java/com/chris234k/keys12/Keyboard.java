@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.HapticFeedbackConstants;
 import android.view.KeyEvent;
@@ -53,6 +54,7 @@ public class Keyboard extends ConstraintLayout {
         popup_window = new PopupWindow(key_popup, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         popup_window.setTouchable(false);
         popup_text = key_popup.findViewById(R.id.key_popup_text);
+        popup_text.setAutoSizeTextTypeUniformWithConfiguration(20, 40, 1, TypedValue.COMPLEX_UNIT_SP);
 
         // setup key visual state
         int childCount = getChildCount();
@@ -106,6 +108,7 @@ public class Keyboard extends ConstraintLayout {
             int y = (int) (key.getY() - Y_OFFSET);
 
             popup_window.setWidth(key.getWidth());
+            popup_window.setHeight(key.getHeight());
             popup_window.showAtLocation(key, Gravity.NO_GRAVITY, x, y);
             popup_text.setText(text);
         }

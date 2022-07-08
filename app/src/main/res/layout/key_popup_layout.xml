@@ -12,8 +12,8 @@
         android:layout_height="match_parent"
         android:background="@drawable/key_popup"
         android:gravity="center"
+        android:maxLines="1"
         android:text="A"
-        android:textColor="@color/light_font"
-        android:textSize="40sp" />
+        android:textColor="@color/light_font" />
 
 </LinearLayout>
