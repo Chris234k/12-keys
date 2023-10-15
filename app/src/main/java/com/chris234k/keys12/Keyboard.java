@@ -131,6 +131,10 @@ public class Keyboard extends ConstraintLayout {
             onSpecial(key);
         } else {
             char c = key.getCharForCurrentState();
+            if(c == Character.MIN_VALUE) {
+                return;
+            }
+            
             if(is_shift || is_caps) {
                 is_shift = false;
                 onShift(is_shift, is_caps);
