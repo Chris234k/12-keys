@@ -63,7 +63,7 @@ public class Key extends Button {
 
 
     // key state
-    private static final float MIN_DIST_SQ = 900f;
+    private static final float MIN_DIST_SQ = 1200f;
     boolean is_pressed;
     float tap_start_x, tap_start_y;
 
